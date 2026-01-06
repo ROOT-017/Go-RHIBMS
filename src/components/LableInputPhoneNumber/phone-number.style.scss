@@ -1,0 +1,20 @@
+
+.input > span,
+.input > input {
+ height: 40px;
+}
+.ant-select-open {
+    min-width: 120px;
+    transition: width 0.3s;
+}
+.phone-number-label {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 4px
+}

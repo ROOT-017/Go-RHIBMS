@@ -1,0 +1,28 @@
+.labeled__input {
+  display: flex;
+  display: -ms-flexbox;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 5px;
+  p {
+    font-size: 1.6rem;
+  }
+}
+
+.labeled__input label {
+  font-weight: 600;
+  color: #4c4f4e;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+}
+.error {
+  color: #df0a4a;
+}

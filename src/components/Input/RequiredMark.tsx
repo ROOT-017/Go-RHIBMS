@@ -1,0 +1,1 @@
+export const RequiredMark = () => <span className="text-errorColor mx-2">*</span>;

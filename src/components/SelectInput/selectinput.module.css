@@ -1,0 +1,105 @@
+.custom__select {
+  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  width: 100%;
+  position: relative;
+}
+
+.select__control {
+  outline: none;
+  border: 1px solid #bec2c1;
+  padding: 10px 14px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  display: flex;
+  display: -ms-flexbox;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.options {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #bec2c1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  z-index: 1;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 4px;
+  transform: translateY(10px);
+  -webkit-transform: translateY(10px);
+  -moz-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  -o-transform: translateY(10px);
+  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.options.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+}
+
+.options li {
+    padding: 4px 10px;
+    transition: 0.2s ease-in-out;
+    -webkit-transition: 0.2s ease-in-out;
+    -moz-transition: 0.2s ease-in-out;
+    -ms-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.6rem;
+}
+
+.options li:hover{
+  background: #f0f0f0;
+}
+
+.options li.selected {
+  background: #241773;
+  color: #fff;
+}
+
+.select__control h3 {
+  font-size: 1.6rem;
+}
+
+.custom__select span {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #787777;
+  width: 100%;
+}
+
+.custom__select:focus {
+  border: 1px solid #787777;
+}

@@ -1,0 +1,26 @@
+.btn {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 16px;
+}
+.btnBordered {
+  border-width: 2px;
+  border-color: currentColor;
+  border-style: solid;
+}
+
+.btnTransparent {
+  background: transparent;
+}
+
+.btnCentered {
+  justify-content: center;
+}
+// .btnDanger {
+//     background-color: #fff !important;
+// }
+
+.btnDanger:not([class*='btn-primary']) {
+  background-color: #fff !important;
+}

@@ -1,0 +1,19 @@
+import { SVGAttributes } from "react"
+
+export function ArrowDownIcon({ fill = "#000D1A", ...props }: SVGAttributes<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+    >
+      <path
+        d="M4.94 5.53003L8 8.58336L11.06 5.53003L12 6.47003L8 10.47L4 6.47003L4.94 5.53003Z"
+        fill={fill}
+      />
+    </svg>
+  );
+}

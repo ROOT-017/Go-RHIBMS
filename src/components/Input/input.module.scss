@@ -1,0 +1,49 @@
+.input {
+  outline: none;
+  border: 1px solid #bec2c1;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #787777;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  &:focus {
+    outline: none;
+    border: 1px solid #241773;
+  }
+  &:hover {
+    outline: none;
+    border: 1px solid #4096ff;
+  }
+  input {
+    width: 100%;
+    padding: 10px 14px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+  .rightAddOn {
+    padding-right: 15px;
+    height: '100%';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+      cursor: pointer;
+    }
+  }
+}

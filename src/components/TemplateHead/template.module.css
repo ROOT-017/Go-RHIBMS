@@ -1,0 +1,36 @@
+.template__head {
+  display: flex;
+  display: -ms-flexbox;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.template__head h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #241773;
+}
+
+.template__head p {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #787777;
+}
+
+@media screen and (max-width: 924px) {
+  .template__head h2 {
+    font-size: 2.4rem;
+  }
+
+  .template__head p {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 724px) {
+  .template__head h2 {
+    font-size: 1.8rem;
+  }
+}

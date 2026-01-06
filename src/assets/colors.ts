@@ -1,0 +1,18 @@
+export const colors = {
+  blueColorPrimary: '#5870D2',
+  primaryRedColor: '#D25858',
+  lightGreen: '#4DCA42',
+  lightYellow: '#D8DE25',
+  lightBlueGreen: '#40DFA8',
+  tealColor: '#047C6F',
+  textColor: '#4C4F4E',
+  errorColor: '#DF0A4A',
+  menuColor: '#697374',
+  lightTextColor: '#BEC2C1',
+  lightBlueColor: '#E9F1FA',
+  dashboardCardColor: '#FBFDFF',
+  whiteColor: '#fff',
+  fadedTealColor: '#81bdb6',
+  borderColor: '#E9EBEE',
+  lightTealColor: '#EBF7F6',
+};

@@ -1,0 +1,5 @@
+.smooth-transition {
+  transition:
+    height 0.5s ease-in-out,
+    width 0.5s ease-in-out;
+}

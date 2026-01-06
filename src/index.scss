@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+.ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
+  border-color: #047c6f;
+  background-color: #047c6f;
+}
+.ant-radio-hover {
+  border-color: #047c6f;
+  color: #047c6f;
+}
+body {
+  font-family: 'Lato', sans-serif;
+}
+.fade-appear,
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 450ms linear 250ms;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 150ms linear;
+}
+.loading-container {
+  .ant-spin-blur {
+    opacity: 1 !important;
+  }
+}
+.ant-tabs .ant-tabs-tab-btn {
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+// fix evenly spaced tabs flickering issues
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-operations-hidden,
+.ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-operations-hidden {
+  all: revert;
+}
+@keyframes fadein {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ant-switch.ant-switch-checked {
+  background: #047c6f;
+}
+//  .ant-switch :hover {
+//     background: #047C6F;
+// }
+.ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+  background: #241773;
+}
+// .ant-switch{
+//     background: #241773;
+// }
+.page-box {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: transparent;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.animate-fade-in {
+  animation-name: fadein;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.page-box {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.animate-fade-in {
+  animation-name: fadein;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+}
+
+.per-diem-calendar-date-picker {
+  background-color: #241773;
+  color: #fff;
+  font-size: 1.6rem;
+  &:hover {
+    background-color: #fff;
+    color: #241773;
+    border: 1px solid #241773;
+    box-shadow: none;
+  }
+  input::placeholder {
+    color: #fff !important;
+  }
+
+  .ant-picker-suffix {
+    color: #fff;
+  }
+  .ant-picker-input {
+    .ant-picker-clear {
+      color: inherit;
+      .anticon {
+        color: inherit;
+      }
+    }
+  }
+}
+.ant-select .ant-select-arrow {
+  color: #4c4f4e;
+}
+.per-diem-calendar {
+  .ant-picker-cell-inner {
+    .per-diem-calendar-cell {
+      display: none;
+    }
+    &:hover,
+    &:focus {
+      .per-diem-calendar-cell {
+        display: inline-flex;
+        color: #241773;
+      }
+    }
+  }
+}
+.sticky-at-top {
+  position: sticky;
+  top: 0px;
+}
+.sticky-by-left {
+  position: sticky;
+  left: 0px;
+}
+.border-bottom-divider {
+  border-bottom: 1px solid rgba(5, 5, 5, 0.06);
+}
+.bottom-divider-box-shadow {
+  box-shadow: 0 2px 4px #00000014;
+}
+.calendar-cell-btn {
+  max-width: 100%;
+}
+.calendar-cell-action {
+  max-width: 100%;
+}
+.calendar-cell-btn-txt {
+  display: block !important;
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.ant-table-body {
+  min-height: 350px;
+}
+
+img[class*='rounded'] {
+  object-fit: cover;
+}
+
+.ant-picker-cell-disabled {
+  background-color: rgb(238 238 238 / 0.5);
+}
+
+.ant-picker-cell-disabled {
+  background-color: rgb(238 238 238 / 0.5);
+}
+
+::-webkit-scrollbar {
+  width: 0.6em;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #c0c0c057;
+  /* background-color: hsl(120, 70% 20% /1); */
+  border-radius: 100vw;
+  margin-block: 0.2em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0;
+  border-radius: 100vw;
+}
+
+.custom .ant-table-thead > tr > th {
+  background-color: #241773 !important; /* Change to desired color */
+  color: white !important; /* Change text color */
+}
+.custom-gray-header .ant-table-thead > tr > th {
+  background-color: #e5e7eb !important; /* Change to desired color */
+  color: #4b5563 !important; /* Change text color */
+}
+
+.ant-table-tbody td {
+  font-weight: normal !important; /* Reset to normal */
+}

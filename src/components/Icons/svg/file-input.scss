@@ -1,0 +1,53 @@
+.modal-trigger-container {
+    position: relative;
+    width: 100%;
+    .modal-trigger-btn-wrapper {
+        z-index: 5;
+        position: absolute;
+        width: 80%;
+        height: 40%;
+        left: 10%;
+        right: 10%;
+        background: transparent;
+        bottom: 0;
+        margin: auto;
+        display: inline-flex;
+        flex-wrap: nowrap;
+        opacity: 0;
+        transition: .3s;
+        .modal-trigger-btn {
+            width: 100%;
+            color: #fff;
+            background: rgb(0 0 0 / 0.4);
+            padding: 5px 10px;
+            height: fit-content;
+            max-height: 100%;
+            text-wrap: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    }
+    &:hover {
+        .modal-trigger-btn-wrapper {
+            opacity: 1;
+        }
+        .modal-trigger-scroll-holder {
+            opacity: 1;
+        }
+    }
+    .modal-trigger-scroll-holder {
+        width: 10%;
+        height: 40%;
+        pointer-events: none;
+        user-select: none;
+        opacity: 0;
+        transition: .3s;
+        z-index: 5;
+        position: absolute;
+        background: transparent;
+        display: inline-flex;
+        bottom: 0;
+    }
+}

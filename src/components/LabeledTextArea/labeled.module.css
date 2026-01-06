@@ -1,0 +1,16 @@
+.labeled__input {
+  display: flex;
+  display: -ms-flexbox;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.labeled__input label {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #241773;
+}

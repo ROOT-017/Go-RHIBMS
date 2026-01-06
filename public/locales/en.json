@@ -1,0 +1,532 @@
+{
+  "home": {
+    "copyright-text": "MedSyncAI | ",
+    "copyright-year": "2025",
+    "terms-of-use": "Terms of Use",
+    "privacy-policy": "Privacy Policy",
+    "contact-us": "Contact Us",
+    "dashboard": "Dashboard",
+    "hero": {
+      "template": {
+        "heading": "Empower your Healthcare Journey with MedSyncAI",
+        "text": "Powered by advanced AI technology, MedSyncAI connects Healthcare Centers with Medical Workers, ensuring streamlined scheduling, competitive compensation, and prompt payments",
+        "aria-label-find-job": "get started",
+        "find-job": "Explore Jobs",
+        "aria-label-hire-staff": "get started",
+        "hire-staff": "Find Talent",
+        "alt-hero": "hero"
+      },
+      "slider": {
+        "item-1": {
+          "heading": "Empower Your Medical Journey with MedSyncAI",
+          "text": "AI-driven connections between medical centers and medical workers for seamless scheduling, competitive pay, and fast payments.",
+          "aria-label-find-job": "get started",
+          "find-job": "Explore Jobs",
+          "aria-label-hire-staff": "get started",
+          "hire-staff": "Find Talent",
+          "alt-image": "hero"
+        },
+        "item-2": {
+          "heading": "For Medical Workers",
+          "sub-heading": "Your Next Job is Just a Click Away",
+          "text": "Explore Opportunities in Nursing, Therapy, Pharmacy, and More",
+          "list": {
+            "item-1": "Explore Opportunities in Nursing, Therapy, Pharmacy, and More",
+            "item-2": "Create Your Profile & Upload Your Resume",
+            "item-3": "Get Matched with the Right Medical Center"
+          },
+          "aria-label-view-more": "view more",
+          "create-your-free-profile": "Create Account",
+          "aria-label-create-your-free-profile": "create account",
+          "view-more": "View More",
+          "alt-image": "Job Seeker"
+        },
+        "item-3": {
+          "heading": "For Medical Centers",
+          "sub-heading": "Hire Qualified Healthcare Talent Faster",
+          "text": "Finding the right healthcare professional can be challenging. MedSyncAI simplifies the hiring process by connecting you with qualified candidates through a streamlined platform.",
+          "list": {
+            "item-1": "Leverage our advanced AI tool to match skills, experience, and location with your needs."
+          },
+          "aria-label-view-more": "view more",
+          "post-a-job": "Post a job",
+          "aria-label-post-a-job": "post a job",
+          "view-more": "View More",
+          "alt-image": "For Employer"
+        }
+      }
+    },
+    "search": {
+      "text": "Have questions about MedSyncAI or our services? Ask MedSyncAI Assist!",
+      "message": "Your message",
+      "placeholder": "Message MedSyncAI Assistant"
+    },
+    "features": {
+      "template": {
+        "heading": "What we offer",
+        "receive-real-time-alerts": "Receive real-time alerts for per-diem and long-term assignments",
+        "intelligent-automated-registration": "Intelligent, automated registration for professionals and facilities",
+        "unified-payroll-time-sheet": "Unified payroll, time-sheet, and tax documentation interface for all users"
+      }
+    },
+    "about": {
+      "button": "button",
+      "top-professionals": "Top Professionals",
+      "ai-powered": "AI Powered",
+      "ai": "ai",
+      "card": {
+        "heading": "ABOUT US",
+        "text": "Welcome to MedSyncAI, the future of medical staffing. Our AI-powered platform revolutionizes the hiring process by seamlessly connecting medical centers with qualified medical workers. Smart Matching: Advanced algorithms go beyond resumes, evaluating clinical expertise to provide precise candidate recommendations. Faster Hiring: Reduce recruitment time with an efficient, AI-driven selection process. User-Friendly Experience: Intuitive dashboards for both employers and job seekers ensure a seamless connection. MedSyncAI optimizes workforce allocation, enhances staffing efficiency, and ultimately improves patient care. Join us in transforming healthcare staffing through the power of artificial intelligence. MedSyncAI – Smarter Staffing. Better Healthcare.",
+        "aria-label-our-story": "our story",
+        "our-story": "Our Story"
+      },
+      "operation": "operation",
+      "medsync-ai": "MedSyncAI",
+      "where": ", Your Partner in",
+      "AI": "Medical",
+      "meets-healthcare-staffing": "Staffing Excellence",
+      "turning-dreams": "Effortless hiring. Smarter job matching. Discover the MedSyncAI difference today!"
+    },
+    "large-card": {
+      "template": {
+        "heading": "Bridging Careers, Elevating Care",
+        "text": "Click to get started",
+        "aria-label-hire-staff": "hire staff",
+        "hire-staff": "Find Talent",
+        "aria-label-find-jobs": "explore job",
+        "find-jobs": "Explore Jobs"
+      }
+    }
+  },
+  "navbar-organism": {
+    "healthcare-workers": "Medical Workers",
+    "medical-centers": "Medical Centers",
+    "contact-us": "Contact Us",
+    "our-story": "Our Story",
+    "faq": "FAQ",
+    "aria-label-register": "register",
+    "aria-label-login": "login",
+    "aria-label-menu": "menu",
+    "register": "Register",
+    "login": "Login"
+  },
+  "contact-us": {
+    "heading": "Contact Us",
+    "days": "Monday - Friday",
+    "time": "6:00 AM - 6:00 PM EST",
+    "for-quick-response": "For fastest response, contact our support team via chat during our operational hours.",
+    "call-us": "Call Us",
+    "medsync_phone": "888-000-0000",
+    "email-support": "Email Support",
+    "send-us-note": "or send us a note directly in the feedback form below",
+    "support-email": "support@medsyncai.com",
+    "chat-support": "Chat Support",
+    "use-chat-support": "Use our chat support by clicking",
+    "here": "Here",
+    "hello-there": "Hello there!",
+    "message-to-book-demo": "Send us a message to book a demo",
+    "first-name": "First Name",
+    "first-name-placeholder": "First Name",
+    "last-name": "Last Name",
+    "last-name-placeholder": "Last Name",
+    "email": "Email",
+    "email-placeholder": "Email",
+    "phone-number": "Phone Number",
+    "phone-number-placeholder": "Phone Number",
+    "message": "Message",
+    "message-placeholder": "Please add any additional details here",
+    "submit": "Submit",
+    "value-your-feedback": "We Value Your Feedback",
+    "feedback-cta": "Your feedback helps us improve and provide a better experience for you."
+  },
+  "healthcare-workers": {
+    "hero": {
+      "heading": "Join our elite network of medical workers committed to delivering top-quality care",
+      "subheading": "Experience a seamless onboarding journey with us through the following steps",
+      "button-text": "Register your Healthcare center"
+    },
+    "service": {
+      "heading": "Discover the power and benefits of MedSyncAI’s platform today",
+      "service-element-1": {
+        "heading": "Automate Credentials",
+        "text": "Automate worker credentials with ease. Join us and elevate your medical center efficiency today."
+      },
+      "service-element-2": {
+        "heading": "AI Pairing",
+        "text": "Our technology uses AI-driven matching to pinpoint the ideal talent while improving cost efficiency."
+      },
+      "service-element-3": {
+        "heading": "Honest Pricing",
+        "text": "We guarantee transparent pricing, always offering fair rates, which distinguishes us in the market."
+      }
+    },
+    "medical-center-steps": {
+      "step-1": {
+        "title": "Step 1",
+        "description": "Create account with following information",
+        "list": {
+          "item-1": "General Information",
+          "item-2": "Professional Experience",
+          "item-3": "Education & Training",
+          "item-4": "License & Certification",
+          "item-5": "Job References"
+        }
+      },
+      "step-2": {
+        "title": "Step 2",
+        "description": "Complete your profile with additional information to ensure a smooth onboarding process:",
+        "list": {
+          "item-3": "Skills Assessment",
+          "item-4": "Vaccination Record",
+          "item-5": "References",
+          "item-8": "Personal Identification"
+        }
+      },
+      "step-3": {
+        "title": "Step 3",
+        "description": "Start Applying",
+        "list": {
+          "item-1": "Browse job opportunities and express your interest instantly—no hassle, just one click!"
+        }
+      }
+    },
+    "jobs": {
+      "job-application-successful": "Job Application successful",
+      "job-application-withdrawn-successful": "Job application withdrawn successful",
+      "job-application-deleted": "Job application deleted successfully",
+      "job-application-archived-successful": "Successful Archive Job"
+    },
+    "onboarding": {
+      "onboarding-interview-rescheduled-successfully": "Onboarding Interview Rescheduled Successfully",
+      "background-screening-completed": "Congratulations! Your background check has been successfully completed. You are now ready to proceed with applying for your desired roles. We wish you the best of luck in your job search, and if you have any questions or need further assistance, feel free to reach out to us.",
+      "background-screening-pending": "Thank you for your patience. We want to inform you that your background check is still in progress, and our team is working diligently to complete the verification process. We will notify you as soon as the results are ready, allowing you to proceed with applying for your desired roles.",
+      "start-applying-for-jobs": "Start applying for jobs",
+      "failed-to-save-background-check-info": "Fail to save background check information"
+    },
+    "background-screening": "Background Screening Submitted Successfully",
+    "background-screening-report-uploaded": "Background Screening Uploaded Successfully",
+    "failed-to-upload-background-screening-report": "Fail to upload background screening report",
+    "waiting-verification": {
+      "welcome": " Your application has been received. Complete your profile to start applying for jobs.",
+      "thank-you": "Thank you for choosing MedSyncAI!",
+      "continue-to-profile": "Continue To Your Profile"
+    },
+    "settings": {
+      "request-code": "Request Code",
+      "to-update-your-password": "To update your password you need to request a code",
+      "update-password-failed": "Password update failed",
+      "password-updated-successfully": "Your password was updated successfully"
+    }
+  },
+  "medical-center": {
+    "heading": "Let MedSyncAI streamline your healthcare staffing while optimizing workforce costs",
+    "subheading": "Experience a smarter, more efficient approach to medical staffing with MedSyncAI",
+    "button-text": "Create Account",
+    "service": {
+      "heading": "Discover the power and benefits of MedSyncAI’s platform today",
+      "service-element-1": {
+        "heading": "Automate Credentials",
+        "text": "Automate worker credentials with ease. Join us and elevate your medical center efficiency today."
+      },
+      "service-element-2": {
+        "heading": "AI Pairing",
+        "text": "Our technology ensures GenAI enabled matching to pinpoint ideal talent while enhancing cost-efficiency."
+      },
+      "service-element-3": {
+        "heading": "Honest Pricing",
+        "text": "We guarantee transparent pricing, always offering fair rates, which distinguishes us in the market."
+      }
+    },
+    "medsync-shift": {
+      "heading": "Make the Shift to MedSyncAI Now!",
+      "text": "Wave farewell to intermediaries and staffing agencies. Take control of your workforce composition and budget all in a seamless platform. Transition to MedSyncAI today and discover a whole new world of efficiency.",
+      "get-started": "Get Started",
+      "book-demo": "Book Demo"
+    },
+    "dashboard": {
+      "invite-header-message": "Invite Your Team Members to MedSyncAI",
+      "invite-header-description": " Invite your team to join MedSyncAI by entering their email address and assigning a role. Once they accept, they’ll have access to the appropriate features based on their role, enabling seamless collaboration.",
+      "agreeCardInfo": "By providing your card information, you allow MedsyncAI to charge your card for future payments in accordance with their terms.",
+      "post-perdiem-job": "Post Per-diem Job",
+      "post-an-assignment": "Post an assignment"
+    }
+  },
+  "our-story": {
+    "who-we-are": "Who we are",
+    "who-we-are-text": "Welcome to MedSyncAI, where Your Journey meets Our Innovation. Established in 2024",
+    "get-started": "Get Started",
+    "the-medsync-ai-story": "The MedSyncAI Story",
+    "the-medsync-ai-story-text": "Welcome to MedSyncAI, where Your Journey meets Our Innovation. Established in 2024",
+    "mission": {
+      "mission-1": {
+        "title": "Our Story",
+        "description": "Founded in 2024 by a team of data scientists and software developers passionate about healthcare automation, we set out to transform the staffing industry. Leveraging advanced technology, we created a platform that seamlessly connects healthcare centers with medical workers, streamlining scheduling, compensation, and payments for a more efficient workforce."
+      },
+      "mission-2": {
+        "title": "Our Mission",
+        "description": "Our mission is simple yet profound: to match Medical Workers with Medical Centers through precision, automation, and personalized attention. We understand the importance of reliable staffing in the healthcare industry, and we're dedicated to providing a solution that not only meets but exceeds the needs of both parties."
+      },
+      "mission-3": {
+        "title": "With Us",
+        "description": "Your journey in the healthcare industry is supported by our innovative technology and unwavering commitment to excellence. Join us as we pave the way for a more efficient and effective healthcare staffing experience, one connection at a time."
+      },
+      "mission-4": {
+        "title": "Today",
+        "description": "MedSyncAI continues to drive our mission to transform healthcare staffing through innovation and integrity. Powered by cutting-edge AI technology, we prioritize efficiency, accuracy, and reliability in every aspect of our service."
+      }
+    },
+    "meet-our-team": "Meet our team",
+    "ceo": "CEO",
+    "john-doe": "JOHN DOE"
+  },
+  "main": "main",
+  "login-success": "Login success",
+  "login-failled": "Login failed",
+  "login-error": "Login error",
+  "login-required": "Login required to access MedSyncAI",
+  "welcome": "Welcome {{ username }}",
+  "employees": "Employees",
+  "create-company": "Create Company",
+  "company-information": "Company Information",
+  "company-information-prompt": "Please fill in the company information below",
+  "company-name": "Company Name",
+  "company-website": "Website",
+  "contact-email": "Contact Email",
+  "contact-phone": "Contact Phone",
+  "continue": "Continue",
+  "create-account": "Create Account",
+  "first-name": "First Name",
+  "last-name": "Last Name",
+  "email": "Email",
+  "password": "Password",
+  "already-have-account": "Already have an account?",
+  "login": "Login",
+  "signup": "Signup",
+  "join-your-team": "Join Your Team",
+  "join-team": "Join {{username}}'s Team",
+  "do-not-have-account": "Do not have an account?",
+  "or": "Or",
+  "next": "Next",
+  "terms-and-conditions": "Terms and Conditions",
+  "privacy-policy": "Privacy Policy",
+  "last-updated": "Last Updated",
+  "invite": "Invite",
+  "frequently-asked-question-faqs": "Frequently Asked Questions",
+  "frequently-asked-question": "Frequently Asked Questions",
+  "you-can-decide-to-communicate-directly-with-our-support": "You can decide to communicate directly with our support staff for instant replies usung the blue botton below.",
+  "medsync-desc": "Whether you're a healthcare provider looking to streamline your hiring process or a medical professional seeking your next career opportunity, you'll find helpful information to guide you. If you can't find the answer you're looking for, our dedicated support team is always ready to assist you. Explore the following questions to learn more about how MedSyncAI can meet your staffing and job search needs.",
+  "signup-to-use-medsync": "Sign Up for MedSyncAI",
+  "select-an--account-to-get-started": "Select an account to get started",
+  "healthcare-professionals": "Medical Workers",
+  "healthcare-professional-looking-for-assignments": "I'm a healthcare worker looking for work",
+  "find-work": "Find Work",
+  "healthcare-facilities": "Health Centers",
+  "healthcare-facilities-looking-for-staffs-to-work": "I represent a Healthcare Center looking for staff",
+  "hire-staff": "Find Talent",
+  "have-existing-account": "Have an account? ",
+  "signin": "Sign In",
+  "please-upload-your-resume-to-get-started": "Upload resume to get started",
+  "why-do-i-need-to-upload-my-resume": "Why do I need to upload my resume?",
+  "resume-cv": "Resume",
+  "attach-dropbox-google-drive": "(Attach file)",
+  "file-types-pdf-doc-docx": "File types: .doc, .docx, .pdf, .txt, .rtf",
+  "i-agree-to": "I agree to",
+  "medsync-agreement": "MedSyncAI agreement",
+  "medsync-centers-agreement": "MedSyncAI Centers Agreement",
+  "medsync-workers-agreement": "MedSyncAI Workers Agreement",
+  "save-and-continue": "Save and continue",
+  "upload-file": "Upload file",
+  "upload-cv": "Upload Resume",
+  "personal-data-validation": "Personal Data Validation",
+  "experience": "Experience",
+  "education": "Education",
+  "license": "License",
+  "certifications": "Certifications",
+  "certification": "Certification",
+  "submit-information": "Submit Information",
+  "resume-parsing-steps": "Resume Parsing Steps",
+  "file-types": "File types",
+  "submit-info": "Submit Information",
+  "assessment-completed-successfully": "Assessment completed Successfully",
+  "thanks-for-choosing-medsyncai": "Thank you for choosing MedSyncAI",
+  "let-our-service-create-customized-list": "Kindly take a moment to let our service create your customized list",
+  "licenses-data-validation": "Licenses Data Validation",
+  "education-data-validation": "Education Data Validation",
+  "experience-data-validation": "Experience Data Validation",
+  "parsing-resume-may-take-abit": "Hang tight! We're analyzing your resume to pre-fill your details.",
+  "personal-data-saved-successfully": "Personal Data Saved Successfully",
+  "personal-data-failed-to-save": "Failed to save Personal Data",
+  "work-experiences-added-successfully": "Work Experiences Added Successfully",
+  "work-experience-deleted-successfully": "Work Experience Deleted Successfully",
+  "education-deleted-successfully": "Education Deleted Successfully",
+  "failed-to-add-work-experiences": "Failed to add Work Experiences",
+  "education-added-successfully": "Education Added Successfully",
+  "failed-to-add-education": "Failed to add Education",
+  "failed-to-update-education": "Failed to update Education",
+  "reference-deleted-successfully": "Reference Deleted Successfully",
+  "failed-to-delete-reference": "Failed to delete Reference",
+  "licenses-added-successfully": "Licenses Added Successfully",
+  "license-deleted-successfully": "License Deleted Successfully",
+  "reference-added-successfully": "New Reference Added Successfully",
+  "failed-to-add-reference": "Failed to add reference",
+  "failed-to-update-reference'": "Failed to update reference",
+  "reference-updated-successfully": "Reference Updated Successfully",
+  "failed-to-update-reference": "Failed to update Reference",
+  "certification-updated-successfully": "Certification Updated Successfully",
+  "failed-to-update-certification": "Failed to update Certification",
+  "failed-to-delete-license": "Failed to delete License",
+  "failed-to-delete-education": "Failed to delete Education",
+  "failed-to-delete-work-experience": "Failed to delete Work Experience",
+  "failed-to-delete-certification": "Failed to delete Certification",
+  "failed-to-add-work-experience": "Failed to add Work Experience",
+  "failed-to-add-license": "Failed to add License",
+  "failed-to-add-position": "Failed to add Position",
+  "failed-to-update-license": "Failed to update License",
+  "certification-deleted-successfully": "Certification was deleted successfully",
+  "failed-to-add-licenses": "Failed to add Licenses",
+  "certifications-added-successfully": "Certifications Added Successfully",
+  "failed-to-add-certifications": "Failed to add Certifications",
+  "resume-parsing-failed": "Resume Parsing Failed",
+  "resume-parsing-failed-reason": "Resume Parsing Failed Reason",
+  "resume-saved-successfully": "Resume Saved Successfully",
+  "new-position-added-successfully": "New Position Added successfully",
+  "failed-to-save-resume": "Failed to save resume",
+  "reference-notified": "Reference Notified",
+  "user-email": "User Email",
+  "register-email-prompt": "Please input your email to continue",
+  "register": "Register",
+  "email-sent-check-otp": "Please check your email for a one time password (OTP) to continue",
+  "input-otp": "Please input OTP to continue",
+  "action-required": "Action Required",
+  "resend-email": "Resend Email",
+  "start-date-is-required": "Start Date is Required",
+  "previous": "Previous",
+  "signup-to-continue": "Please Signup to Continue",
+  "confirm-password": "Confirm Password",
+  "dont-have-an-account": "Don't have an account?",
+  "hello-again": "Hello once more",
+  "forgot-password": "Forgot Password",
+  "continue-with-google": "Continue with Google",
+  "continue-with-microsoft": "Continue with Microsoft",
+  "continue-with-facebook": "Continue with Facebook",
+  "continue-with-apple": "Continue with Apple",
+  "responsibilities-are-required": "At least one responsibility is required",
+  "login-prompt": "Login to MedSyncAI",
+  "login-failed": "Login failed! Invalid Credentials.",
+  "login-to-continue": "Please login to continue",
+  "input-validation-failed": "Input validation failed, please review your form.",
+  "welcome-back": "Welcome back {{ username }}",
+  "access-denied": "Access Denied",
+  "medical-center-created": "Medical Center created successfully",
+  "work-location-is-required": "Work location is required",
+  "company-name-is-required": "Company Name is required",
+  "personal-information-saved-successfully": "Personal Information saved successfully",
+  "work-experience-updated-successfully": "Work experience updated successfully",
+  "work-experience-added-successfully": "Work experience added successfully",
+  "license-updated-successfully": "License updated successfully",
+  "certification-file": "Certification file",
+  "only": "Only",
+  "work-education-updated-successfully": "Work education updated successfully",
+  "email-verification-failed": "Please verify your account. Check your email for a verification link.",
+  "verification-success": "Email verification successful. Please login!",
+  "signup-success": "Sign up successful",
+  "signup-failed": "Sign up failed. {{reason}}",
+  "job-post-create-success": "Job post created successfully",
+  "resume-parsed-successfully": "Resume parsed successfully",
+  "select-drag-drop-upload": "Select file or drag/drop to upload",
+  "filter-by": "Filter By",
+  "filters": "Filters",
+  "clear-filters": "Clear Filters",
+  "certification-added-successfully": "Certification added successfully",
+  "ok": "Ok",
+  "post-per-diem-jobs": "Post Per-Diem Jobs",
+  "end-date-is-required": "End date is required",
+  "shift-uploaded-image": "Shift uploaded image",
+  "errors": {
+    "valueMissing": {
+      "workLocation": "Company Location is required",
+      "position": "Position is required",
+      "company": "Company name is required",
+      "school": "Institution name is required",
+      "institutionLocation": "Institution location is required",
+      "degree": "Degree/Program is required",
+      "endDate": "End date is required",
+      "startDate": "Start date is required",
+      "fieldOfStudy": "Major is required",
+      "responsibilities": "At least one responsibility is required",
+      "licenseNumber": "License number is required",
+      "lState": "State is required",
+      "lExpirationDate": "Expiration date is required",
+      "cExpirationDate": "Expiration date is required",
+      "cname": "Certification name is required",
+      "issuer": "Issuer is required",
+      "file": "File is required",
+      "firstName": "First name is required",
+      "lastName": "Last name is required",
+      "title": "Title is required",
+      "email": "Email is required",
+      "phone": "Phone number is required",
+      "dial": "Dial is required",
+      "preferredName": "Preferred name is required",
+      "state": "State is required",
+      "country": "Country is required",
+      "address": "Address is required",
+      "zipCode": "Zip code is required",
+      "ePhone": "Emergency phone number is required",
+      "eFirstName": "Emergency first name is required",
+      "eLastName": "Emergency last name is required",
+      "city": "City is required",
+      "street": "Street is required",
+      "specialty": "Specialty is required",
+      "specialties": "At least one specialty is required"
+    },
+    "typeMismatch": {
+      "degree": "Degree/Program is required"
+    },
+    "invalid": {
+      "phone": "Phone number is invalid"
+    },
+    "account-verification": {
+      "R404": "Verification failed: Verification details provided are invalid.",
+      "R422": "Verification failed: Some verification details are absent."
+    },
+    "general": {
+      "R404": "Resource not found.",
+      "R422": "Validation failed.",
+      "R500": "Internal server error."
+    },
+    "job-application": {
+      "JOB409": "You already applied for this job."
+    },
+    "something-went-wrong": "Something went wrong",
+    "job-fetch": {
+      "fail-to-fetch-applied-jobs": "Fail to fetch applied jobs",
+      "fail-to-fetch-saved-jobs": "Fail to fetch saved jobs",
+      "fail-to-fetch-in-progress-jobs": "Fail to fetch in progress jobs",
+      "fail-to-fetch-archived-jobs": "Fail to fetch archived jobs"
+    },
+    "onboarding-interview": {
+      "fail-to-load-availability-schedule": "Fail to load availability",
+      "fail-to-load-your-schedule-interview": "Fail to load your schedule interview"
+    },
+    "invalid-email": "Invalid email address",
+    "fail": {
+      "failed-try-again": "Failed, Try again"
+    },
+    "shift": {
+      "WSH403": "Cant't start this shift at the location at this time",
+      "U403": "Access is denied for this user",
+      "WSH409": "This worker already has an open shift at this location at this time"
+    }
+  },
+  "notifications": {
+    "JobPosting": "Job Application Alert",
+    "OnboardingInterview": "Onboarding Interview",
+    "ExpiredID": "ID Expiring Soon",
+    "ExpiredCert": "Certification Expiring Soon",
+    "ExpiredLicense": "License Expiring Soon",
+    "JobApplication": "Job Application Received",
+    "WorkerShift": "Worker Shift",
+    "JobApplicationResponse": "Job Application Response"
+  }
+}

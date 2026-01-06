@@ -1,0 +1,14 @@
+.signatureCanvas {
+  width: 100% !important;
+  height: 100% !important;
+  touch-action: none; // Critical for mobile devices
+  min-height: 300px; // Fallback for initial load
+  background-color: #f9fafb;
+}
+
+// Container styles
+.signature-container {
+  width: 100% !important;
+  // height: 100% !important; // Match your h-[32rem]
+  position: relative;
+}

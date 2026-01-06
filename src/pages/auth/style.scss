@@ -1,0 +1,312 @@
+label.label input[type="file"] {
+    position: absolute;
+    top: -1000px;
+  }
+  .label {
+    cursor: pointer;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin: 5px;
+    background: #dddddd;
+    display: inline-block;
+  }
+  .label:hover {
+    background: #5cbd95;
+  }
+  .label:active {
+    background: #9fa1a0;
+  }
+  .label:invalid + span {
+    color: #000000;
+  }
+  .label:valid + span {
+    color: #ffffff;
+  }
+  .ant-checkbox .ant-checkbox-inner {
+    border-color: #241773 !important;
+    color: #241773;
+  }
+  .ant-checkbox :checked {
+    background-color: #241773 !important;
+    border-color: #241773 !important;
+    color: #fff;
+  }
+  .button1:not(:disabled) {
+    background-color: #241773 !important;
+    color: #fff !important;
+  }
+  .button1:not(:disabled):hover {
+    background-color: #fff!important;
+    color: #04655C!important;
+    border: 2px solid #04655C!important;
+  }
+  .fileContainer:hover {
+    border: 2px solid #04655C!important;
+  } 
+  label {
+    &.require-field {
+        position: relative;
+        width: fit-content;
+        &::after {
+            content: "*";
+            position: absolute;
+            right: -15px;
+            color: #ff1001;
+        }
+    }
+}
+input {
+  &:focus-visible, &:focus {
+    outline: none;
+    border: 1px solid rgb(5 153 140);
+  }
+}
+@media screen and (max-width: 768px) {
+  .ant-steps-item-content {
+    margin-left: 33px !important;
+  }
+}
+
+.flex-medsync-card {
+  border-radius: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  .ant-card-head {
+    padding: 0 !important;
+    min-height: 0 !important;
+  }
+  .ant-card-body {
+    padding: 0 !important;
+  }
+}
+.medsync-cv-update-wrapper {
+  height: calc(100vh - 220px);
+  position: relative;
+  font-size: 1.6rem;
+  .register-btn-group {
+    h3, p {
+      font-size: 1.6rem;
+    }
+  }
+  .file-input-label {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #241773;
+  }
+  button {
+    &:disabled {
+      cursor: not-allowed;
+      background: #eee;
+      color: #888;
+    }
+  }
+}
+
+
+.container, .anothercontainer {
+  min-height: 100vh;
+  width: 100%;
+  background: #fff;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  background-image:
+  linear-gradient(to bottom, rgba(36, 23, 115, .53), rgba(36, 23, 115, .53)),
+  url('../../assets/bgAuthMedSync.jpg');
+  background-size: cover;
+  background-position: center;
+  &.medical-center-wrapper {
+    height: 100vh;
+    overflow-y: hidden;
+    min-height: 0;
+    width: 100% !important;
+    max-width: none !important;
+    .content-wrapper {
+      overflow-y: auto;
+      height: calc(100vh - 80px);
+    }
+    .footer-wrapper {
+      height: 70px;
+    }
+  }
+}
+
+.medical-center-container {
+  min-height: 100vh;
+  width: 100%;
+  background: #fff;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  background-image:
+  linear-gradient(to bottom, rgba(36, 23, 115, .53), rgba(36, 23, 115, .53)),
+  url('../../assets/bgAuthMedSync.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  &.medical-center-wrapper {
+    height: 100vh;
+    overflow-y: hidden;
+    min-height: 0;
+    width: 100% !important;
+    max-width: none !important;
+    .content-wrapper {
+      overflow-y: auto;
+      height: calc(100vh - 80px);
+    }
+    .footer-wrapper {
+      height: 70px;
+    }
+  }
+}
+
+.maincontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background: #fff;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  background-image:
+  linear-gradient(to bottom, rgba(36, 23, 115, .53), rgba(36, 23, 115, .53)),
+  url('../../assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.mainWrapper{
+  min-height: calc(100vh - 70px) !important;
+}
+.footer {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  width: 100%;
+  gap: 14px;
+  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  border-top: 1px solid #000;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer h5,
+.footer a {
+  // color: #2c2d2d;
+  font-weight: 400;
+  font-size: 1.4rem !important;
+  white-space: nowrap;
+  transition: color 0.2s ease-in-out;
+  -webkit-transition: color 0.2s ease-in-out;
+  -moz-transition: color 0.2s ease-in-out;
+  -ms-transition: color 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out;
+}
+
+.footer a:hover {
+  color: #241773;
+  text-decoration: underline;
+}
+@media (max-width: 370px){
+  .maincontainer{
+    min-height: 130vh;
+  }
+}
+@media (max-width: 450px){
+  .maincontainer{
+    min-height: 125vh;
+  }
+}
+@media (min-width: 678px){
+  .maincontainer{
+    min-height: 110vh;
+  }
+}
+@media (min-width: 1024px){
+  .maincontainer{
+    min-height: 100vh;
+  }
+}
+
+@media (max-width: 449px){
+  .anothercontainer{
+    min-height: 105vh;
+  }
+}
+// @media (max-width: 450px){
+//   .anothercontainer{
+//     min-height: 125vh;
+//   }
+// }
+@media (min-width: 678px){
+  .anothercontainer{
+    min-height: 100vh;
+  }
+}
+@media (min-width: 1024px){
+  .anothercontainer{
+    min-height: 100vh;
+  }
+}
+ @media (min-width: 1200px){
+  .maincontainer{
+    min-height: 100vh;
+  }
+} 
+.med-input {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 4px 11px;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  list-style: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  min-width: 0;
+  border-radius: 6px;
+  transition: all 0.2s;
+  background: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d9d9d9;
+  &:focus, &:focus-within {
+      border-color: #1677ff;
+      box-shadow: 0 0 0 2px rgba(5, 145, 255, 0.1);
+      outline: 0;
+      background-color: #ffffff;
+      
+  }
+}
+.svgBg{
+  background-color: #FFFFFF;
+  background-image: url('../../assets/bg4steps.png');
+}
+.background{
+  background-image: url('../../assets/bg4steps.png');
+  background-repeat: repeat;
+  background-size: contain;
+  object-fit: contain;
+  color: #fff;
+}
+.svg2bg{
+  background-color: #00bb77;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpolygon fill='%23000' fill-opacity='0.35' points='120 0 120 60 90 30 60 0 0 0 0 0 60 60 0 120 60 120 90 90 120 60 120 0'/%3E%3C/svg%3E");
+}

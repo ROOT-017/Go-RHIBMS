@@ -1,0 +1,24 @@
+.interview-sample-panel {
+  ol,
+  ul {
+    list-style: revert;
+    padding: revert;
+    margin: revert;
+  }
+  h3 {
+    font-size: revert;
+    font-weight: revert;
+  }
+}
+
+// .gohst-input {
+//   border-top: none;
+//   border-left: none;
+//   border-right: none;
+//   border-bottom-right-radius: 0;
+//   border-bottom-left-radius: 0;
+// }
+
+button:disabled {
+  cursor: not-allowed;
+}

@@ -1,0 +1,28 @@
+.textarea {
+  outline: none;
+  border: 1px solid #bec2c1;
+  padding: 10px 14px;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #787777;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -ms-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  width: 100%;
+  resize: vertical;
+}
+
+.textarea::-webkit-scrollbar {
+  display: none
+}
+
+.textarea:focus {
+  border: 1px solid #787777;
+}

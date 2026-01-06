@@ -1,0 +1,36 @@
+.med-number-input {
+    display: inline-flex !important;
+    .med-number-input-addon {
+        visibility: hidden;
+        font-size: 12;
+    }
+    &:hover {
+        .med-number-input-addon {
+            visibility: visible;
+        } 
+    }
+    .med-number-input-addon-btn {
+        font-size: 12px;
+        font-weight: 700;
+        transition: .3s;
+        &:hover {
+            transform: scale(1.2);
+        }
+        user-select: none;
+    }
+}
+.ant-input-suffix {
+    height: 100%;
+}
+.med-pass-input {
+    padding: 0;
+    padding-right: 8px;
+    input {
+        height: 100%;
+        padding: 11px !important;
+        border-top-left-radius: inherit !important;
+        border-bottom-left-radius: inherit !important;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}

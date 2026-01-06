@@ -1,0 +1,12 @@
+export { CloseIcon } from './close';
+export { HomeIcon } from './home';
+export { UserGroupIcon } from './user-group';
+export { TravelCaseIcon } from './travel-case';
+export { BookOpenIcon } from './book-open';
+export { BookLibraryIcon } from './book-library';
+export { SettingsIcon } from './settings';
+export { ArrowDownIcon } from './arrow-down';
+export { UncheckedBoxIcon } from './unchecked-box';
+export { CheckedBoxIcon } from './checked-box';
+export { CloudUploadFilled } from './cloud-upload-filled';
+export { SaveFilled } from './save-filled';
