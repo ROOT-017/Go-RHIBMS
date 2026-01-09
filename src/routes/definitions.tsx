@@ -7,10 +7,24 @@ const lazyPages = {
   StudentDetailsAdminPage: lazy(
     () => import('../pages/admin/StudentDetails.admin'),
   ),
+  AdminDashboard: lazy(() => import('../pages/admin/admin-dashboard')),
+  AdminStudentView: lazy(() => import('../pages/admin/AdminStudentView')),
+  AdminCoursesView: lazy(() => import('../pages/admin/AdminCoursesView')),
+  AdminProgramsView: lazy(() => import('../pages/admin/AdminProgramsView')),
+  AdminDepartmentsView: lazy(
+    () => import('../pages/admin/AdminDepartmentsView'),
+  ),
+  AdminInstitutionalInfoView: lazy(
+    () => import('../pages/admin/AdminInstitutionalInfoView'),
+  ),
+  AddCourses: lazy(() => import('../pages/admin/AddCourses.admin')),
   AddProgram: lazy(() => import('../pages/admin/AddProgram.admin')),
   AddStudent: lazy(() => import('../pages/admin/AddStudent.admin')),
+  AddSchool: lazy(() => import('../pages/admin/AddSchool.admin')),
+  AddDepartment: lazy(() => import('../pages/admin/AddDepartment.admin')),
   TermsAndConditionPage: lazy(() => import('../pages/terms-and-conditions')),
   HomePage: lazy(() => import('../pages/page')),
+  CourseDetailAdmin: lazy(() => import('../pages/admin/CourseDetail.admin')),
   /// add your pages here
 } as const;
 

@@ -5,12 +5,12 @@ import {
   useSelector as useReduxSelector,
 } from 'react-redux';
 import rootReducer from './rootReducer';
-import middlewareArray from './middlewareArray';
+// import middlewareArray from './middlewareArray';
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: (defaultMiddleware) =>
-    defaultMiddleware().concat(middlewareArray),
+  // middleware: (defaultMiddleware) =>
+  //   defaultMiddleware().concat(middlewareArray),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

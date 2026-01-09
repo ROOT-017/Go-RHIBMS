@@ -6,14 +6,16 @@ import { useDispatch, useSelector } from './store';
 import { Toaster } from 'react-hot-toast';
 import { Modal } from 'antd';
 import { Button } from './components/design-system/buttons';
+import { restoreSession } from './store/features/slices/auth.slice';
 
 function App() {
   const alerts = useSelector((state) => state.alerts);
   const dispatch = useDispatch();
+
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  useEffect(() => {}, [dispatch]);
+    dispatch(restoreSession());
+  }, [dispatch]);
+
   return (
     <>
       <Toaster

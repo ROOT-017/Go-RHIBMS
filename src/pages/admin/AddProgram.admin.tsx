@@ -1,4 +1,3 @@
-import React from 'react';
 import LabeledInputMolecule from '../../components/LabeledInput/LabeledInput.molecule';
 import { FlexContainer } from '../../components/flex-container';
 import LabelSelectMolecule from '../../components/Input/LabelSelectMolecule';
@@ -9,12 +8,24 @@ import { ButtonPrimary } from '../../components/design-system/buttons';
 import Center from '../../components/Layout/Center/Center';
 import { CloudUploadFilled } from '../../components/Icons/svg';
 import FileInput from '../../components/Icons/svg/file-input';
+import { ArrowLeftOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 const AddProgram = () => {
+  const navigate = useNavigate()
   const { data, onChange, loading, handleAddSubmit } = useAddStudent();
   return (
     <div className="p-5 lg:mx-72 my-12 w-full flex flex-col items-center">
-      <h2 className="text-4xl text-center">Add Student</h2>
+      <div className="flex items-center lg:w-[60%]">
+        <div
+          className="flex cursor-pointer items-center"
+          onClick={() => navigate('/admin/dashboard/programs')}
+        >
+          <ArrowLeftOutlined className="" />
+          <p className="text-primaryColor pl-4"> Back To All Programs</p>{' '}
+        </div>
+        <h2 className="text-4xl flex-1 text-center">Add Program</h2>
+      </div>{' '}
       <div className="w-full lg:w-[60%]">
         <div className="flex w-full gap-8 mt-[20px] flex-col md:flex-row flex-wrap">
           <FlexContainer labelRequired={false} label={''}>

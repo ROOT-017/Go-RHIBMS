@@ -37,6 +37,18 @@ const navItems = [
     path: pathnames.PROGRAMS,
     key: pathnames.PROGRAMS,
   },
+  {
+    label: 'Schools',
+    name: 'Schools',
+    path: pathnames.SCHOOLS,
+    key: pathnames.SCHOOLS,
+  },
+  {
+    label: 'Institutional Data',
+    name: 'Institutional Data',
+    path: pathnames.INSTITUTIONAL_DATA,
+    key: pathnames.INSTITUTIONAL_DATA,
+  },
 ];
 const AdminNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -99,6 +111,7 @@ const AdminNavbar = () => {
       <div className="h-fit hidden gap-4 md:flex border-b-2">
         {navItems.map((elt) => (
           <NavLink
+            key={elt.key}
             to={elt.path}
             className={({ isActive }) =>
               `text-2xl text-white hover:bg-white p-4 hover:text-primaryColor ${isActive ? 'bg-white !text-primaryColor' : 'text-white'}`

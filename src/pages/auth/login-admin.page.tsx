@@ -7,12 +7,14 @@ import { pathnames } from '../../routes/path-name';
 import './style.scss';
 import { ButtonPrimary } from '../../components/design-system/buttons';
 import { PasswordInput } from '../../components/Input/PasswordInput';
+import { Footer } from '../../components/Footer/footer';
+import { useLoginSignup } from '../../hooks/auth.hooks';
 // import { ErrorLabel } from '../../components/Input/ErrorLabel';
 
 export default function LoginPage() {
   const { t } = useTranslation();
-  const { inputValues, onInputChange, onSubmit, onBlur, isLoading, error } =
-    useLoginSignup('login');
+  const { inputValues, onInputChange, onSubmit, isLoading } =
+    useLoginSignup('admin');
 
   return (
     <div className="maincontainer">
@@ -25,7 +27,7 @@ export default function LoginPage() {
               </Link>
               <div className="flex flex-col justify-center items-center">
                 <h2 className="text-[18px] md:text-[20px] lg:text-[28px] font-[700] text-[#000]">
-                  Login to Go-RHIBMS
+                 Admin Login to Go-RHIBMS
                 </h2>
               </div>
 
@@ -61,7 +63,7 @@ export default function LoginPage() {
                       placeholder="Email"
                       type="email"
                       onChange={onInputChange}
-                      onBlur={onBlur}
+                      // onBlur={onBlur}
                       // status={error?.email ? 'error' : ''}
                     />
                     {/* <ErrorLabel error={error?.email} className="absolute" /> */}
@@ -76,7 +78,7 @@ export default function LoginPage() {
                       value={inputValues.password}
                       onChange={onInputChange}
                       placeholder="Password"
-                      onBlur={onBlur}
+                      // onBlur={onBlur}
                       minLength={8}
                       // status={error?.password ? 'warning' : ''}
                     />
@@ -84,10 +86,10 @@ export default function LoginPage() {
                 </div>
                 <div className="flex flex-col w-full md:flex-row md:gap-8 justify-center mt-[10px] items-center ">
                   <ButtonPrimary
-                    loading={isLoading.email}
+                    loading={isLoading}
                     disabled={
-                      isLoading.email ||
-                      error?.email != null ||
+                      isLoading ||
+                      // error?.email != null ||
                       !inputValues.password ||
                       !inputValues.email
                     }
@@ -104,7 +106,7 @@ export default function LoginPage() {
         </div>
       </main>
       {/* footer */}
-      <LegalFooter />
+      <Footer />
     </div>
   );
 }

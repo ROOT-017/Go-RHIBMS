@@ -8,10 +8,12 @@ import i18n from './i18n/index.ts';
 import { store } from './store/index.ts';
 import { ConfigProvider } from 'antd';
 import { colors } from './assets/colors.ts';
+import { AuthListener } from './AuthProvider.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <I18nextProvider i18n={i18n}>
+      {/* <AuthListener /> */}
       <Provider store={store}>
         <ConfigProvider
           theme={{
@@ -84,8 +86,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 borderRadius: 10,
               },
               Form: {
-                itemMarginBottom: 8
-              }
+                itemMarginBottom: 8,
+              },
             },
           }}
         >

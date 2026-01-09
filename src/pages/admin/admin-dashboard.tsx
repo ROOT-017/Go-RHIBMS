@@ -3,6 +3,7 @@ import { pathnames } from '../../routes/path-name';
 import { colors } from '../../assets/colors';
 import UserProfileCard from '../../components/Card/UserProfileCard';
 import Chatbot from '../../components/chatbot/Chatbot';
+import profile from '../../assets/profile.jpg';
 
 interface DashboardCardProps {
   label: string;
@@ -46,20 +47,32 @@ const dashboardData: DashboardCardProps[] = [
     label: 'Add Departments',
   },
   {
+    color: colors.lightBlueGreen,
+    path: pathnames.ADD_SCHOOLS,
+    label: 'Add School',
+  },
+  {
     color: colors.primaryRedColor,
     path: pathnames.INSTITUTIONAL_DATA,
     label: 'Institutional Data',
   },
 ];
 const AdminDashboard = () => {
+  const userdata = {
+    name: 'John Doe',
+    profile_url: profile,
+    email: 'john@example.com',
+    phone: '123456789',
+    location: 'Muea, Buea',
+  };
   return (
     <>
       <Chatbot />
       <div className="justify-center gap-8 flex flex-col lg:flex-row items-center lg:items-start">
         <div>
-          <UserProfileCard />
+          <UserProfileCard {...userdata} />
         </div>
-        <div className="flex lg:flex-col flex-wrap justify-center  w-full items-center lg:w-fit lg:grid pt-4 grid-cols-2 grid-rows-2 gap-8 mb-14">
+        <div className="flex lg:flex-co flex-wrap justify-center  w-full items-center lg:w-[60%]  lg:flex  pt-4 grid-cols-2 grid-rows-2 gap-8 mb-14">
           {dashboardData.map((elt) => (
             <DashboardCard {...elt} key={elt.path} />
           ))}

@@ -4,14 +4,15 @@ import { pages } from './definitions';
 import Error404 from '../pages/errors/_404';
 import AdminLayout from '../components/Layout/Dashboard/AdminLayout';
 import DashboardLayout from '../components/Layout/Dashboard/DashboardLayout';
-import AdminDashboard from '../pages/admin/admin-dashboard';
 import AdminStudentView from '../pages/admin/AdminStudentView';
 import AdminCoursesView from '../pages/admin/AdminCoursesView';
 import AdminProgramsView from '../pages/admin/AdminProgramsView';
 import AdminDepartmentsView from '../pages/admin/AdminDepartmentsView';
 import AdminInstitutionalInfoView from '../pages/admin/AdminInstitutionalInfoView';
 import Dashboard from '../pages/student/student-dashboard';
-import AddCourses from '../pages/admin/AddCourses.admin';
+import AdminSchoolView from '../pages/admin/AdminSchoolView';
+import AcademicStructure from '../pages/student/AcademicStructure';
+import FormB from '../pages/student/FormB';
 
 export const routes: Array<RouteObject> = [
   {
@@ -39,6 +40,14 @@ export const routes: Array<RouteObject> = [
         index: true,
         element: <Dashboard />,
       },
+      {
+        element: <AcademicStructure />,
+        path: pathnames.ACADEMIC_STRUCTURE,
+      },
+      {
+        element: <FormB />,
+        path: pathnames.FORM_B,
+      },
     ],
   },
 
@@ -47,7 +56,7 @@ export const routes: Array<RouteObject> = [
     element: <AdminLayout />,
     children: [
       {
-        element: <AdminDashboard />,
+        element: pages.AdminDashboard,
         index: true,
       },
       {
@@ -58,9 +67,18 @@ export const routes: Array<RouteObject> = [
         element: <AdminCoursesView />,
         path: pathnames.COURSES,
       },
+
       {
-        element: <AddCourses />,
+        element: pages.AddCourses,
         path: pathnames.ADD_COURSES,
+      },
+      {
+        element: pages.CourseDetailAdmin,
+        path:
+          pathnames.ADMIN_DASHBOARD +
+          '/' +
+          pathnames.COURSES +
+          '/:courseCode/details',
       },
       {
         element: <AdminProgramsView />,
@@ -75,6 +93,14 @@ export const routes: Array<RouteObject> = [
         path: pathnames.ADD_PROGRAMS,
       },
       {
+        element: pages.AddSchool,
+        path: pathnames.ADD_SCHOOLS,
+      },
+      {
+        element: pages.AddDepartment,
+        path: pathnames.ADD_DEPARTMENTS,
+      },
+      {
         element: pages.StudentDetailsAdminPage,
         path:
           pathnames.ADMIN_DASHBOARD + '/students/:matriculationNumber/details',
@@ -86,6 +112,10 @@ export const routes: Array<RouteObject> = [
       {
         element: <AdminInstitutionalInfoView />,
         path: pathnames.INSTITUTIONAL_DATA,
+      },
+      {
+        element: <AdminSchoolView />,
+        path: pathnames.SCHOOLS,
       },
     ],
   },

@@ -1,1 +1,0 @@
-1. Active range should change if and only if selected value is not in current active range

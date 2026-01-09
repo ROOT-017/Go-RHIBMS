@@ -1,4 +1,3 @@
-import React from 'react';
 import { FlexContainer } from '../../components/flex-container';
 import LabeledInputMolecule from '../../components/LabeledInput/LabeledInput.molecule';
 import LabelSelectMolecule from '../../components/Input/LabelSelectMolecule';
@@ -6,13 +5,26 @@ import Center from '../../components/Layout/Center/Center';
 import { ButtonPrimary } from '../../components/design-system/buttons';
 import { useAddCourse } from '../../hooks/admin.hooks';
 import { academicLevel, Semester } from '../../constants';
+import LabeledDateInputMolecule from '../../components/LabeledDateInput/LabeledDateInput.molecule';
+import { ArrowLeftOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 const AddCourses = () => {
   const { data, onChange, loading, handleAddSubmit } = useAddCourse();
+  const navigate = useNavigate();
 
   return (
     <div className="p-5 my-12 w-full flex flex-col items-center">
-      <h2 className="text-4xl text-center">Add Course</h2>
+      <div className="flex items-center lg:w-[60%]">
+        <div
+          className="flex cursor-pointer items-center"
+          onClick={() => navigate('/admin/dashboard/add-course')}
+        >
+          <ArrowLeftOutlined className="" />
+          <p className="text-primaryColor pl-4"> Back To All A Courses</p>{' '}
+        </div>
+        <h2 className="text-4xl flex-1 text-center">Add Course</h2>
+      </div>
       <div className="w-full lg:w-[60%]">
         <div className="flex w-full gap-8 mt-[20px] flex-col md:flex-row flex-wrap">
           <FlexContainer labelRequired={false} label={''}>
@@ -31,7 +43,7 @@ const AddCourses = () => {
             <LabeledInputMolecule
               inputProps={{
                 required: true,
-                type: 'number',
+                // type: 'number',
                 value: data.courseCode,
                 placeholder: 'Course code',
                 onChange: (e) => onChange('courseCode', e.target.value),
@@ -101,9 +113,27 @@ const AddCourses = () => {
                 .localeCompare(String(optionB?.label ?? '').toLowerCase?.())
             }
           />
+          <LabeledDateInputMolecule
+            label="Select Year"
+            name="year"
+            required
+            picker="year"
+            // placeholder={'Select year'}
+            // showSearch={false}
+            // options={[]}
+            value={data.year}
+            onDateChange={(_, e) => {
+              onChange('year', e);
+            }}
+            // filterSort={(optionA, optionB) =>
+            //   String(optionA?.label ?? '')
+            //     .toLowerCase?.()
+            //     .localeCompare(String(optionB?.label ?? '').toLowerCase?.())
+            // }
+          />
           <Center>
             <ButtonPrimary
-              className="mt-4 w-full text-ce"
+              className="p-4 flex w-full mt-4 justify-center items-center"
               onClick={handleAddSubmit}
               loading={loading}
             >
@@ -116,5 +146,4 @@ const AddCourses = () => {
   );
 };
 
-export default AddCourses
-;
+export default AddCourses;

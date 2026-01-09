@@ -80,19 +80,13 @@ const AdminStudentView = () => {
         columns={columns}
         loading={loading}
         onRow={(record) => ({
-          onClick: () => navigate(`${record.matriculationNumber}`),
+          onClick: () => navigate(`${record.matriculationNumber}/details`),
+          title: 'View Student Details',
+          style: { cursor: 'pointer' },
         })}
         rowKey={(record) =>
           record.id ? record.id.toString() : record.matriculationNumber
         }
-        //  pagination={{
-        //         current: workers.number + 1,
-        //         total: workers.totalElements,
-        //         pageSize: workers.size,
-        //         showSizeChanger: true,
-        //         showTotal: (total) => `Total ${total} items`,
-        //       }}
-        // className="custom-gray-header"
       />
     </div>
   );

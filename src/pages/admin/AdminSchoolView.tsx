@@ -1,37 +1,42 @@
-import React from 'react';
-import { useAdminManageDepartments } from '../../hooks/admin.hooks';
 import { useNavigate } from 'react-router-dom';
-import Filters from '../../components/Filter/Filters';
-import { ButtonPrimary } from '../../components/design-system/buttons';
-import { PlusOutlined } from '@ant-design/icons';
+import { useAdminManageSchools } from '../../hooks/admin.hooks';
 import { Table, TableProps } from 'antd';
-import { Department } from '../../@types';
+import { School } from '../../@types';
+import { ButtonPrimary } from '../../components/design-system/buttons';
+import Filters from '../../components/Filter/Filters';
+import { PlusOutlined } from '@ant-design/icons';
 
-const AdminDepartmentsView = () => {
-  const { data, loading, filters, onChangeFilters } =
-    useAdminManageDepartments();
+const AdminSchoolView = () => {
+  const { data, filters, loading, onChangeFilters } = useAdminManageSchools();
   const navigate = useNavigate();
-
-  const columns: TableProps<Department>['columns'] = [
+  const columns: TableProps<School>['columns'] = [
     {
-      title: 'Department Name',
-      dataIndex: 'departmentName',
-      key: 'departmentName',
-      fixed: 'left',
-      render: (_, record) => record.departmentName,
+      title: 'ID',
+      dataIndex: 'id',
+      key: 'id',
+      render: (_, __, i) => i + 1,
     },
     {
-      title: 'School',
-      dataIndex: 'school',
-      key: 'school',
-      render: (_, record) => record.school,
+      title: 'School Name',
+      dataIndex: 'schoolName',
+      key: 'schoolName',
+      fixed: 'left',
+      render: (_, record) => record.schoolName,
+    },
+    {
+      title: 'Actions',
+      key: 'actions',
+      render: (_, record) => (
+        <ButtonPrimary onClick={() => navigate(`${record.schoolName}/details`)}>
+          View
+        </ButtonPrimary>
+      ),
     },
   ];
-
   return (
     <div className="p-5 lg:mx-32 ">
       <div className="my-6">
-        <h2 className="text-4xl text-center">All Courses Record</h2>
+        <h2 className="text-4xl text-center">All School Record</h2>
         <div className="flex justify-end"></div>
       </div>
       <Filters
@@ -40,10 +45,10 @@ const AdminDepartmentsView = () => {
         placeholder="Search for course code or title..."
         endComponent={
           <ButtonPrimary
-            onClick={() => navigate('add-department')}
+            onClick={() => navigate('add-school')}
             icon={<PlusOutlined />}
           >
-            Add Department
+            Add School
           </ButtonPrimary>
         }
       />
@@ -55,14 +60,14 @@ const AdminDepartmentsView = () => {
           overflowX: 'auto',
         }}
         onRow={(record) => ({
-          onClick: () => navigate(`${record.departmentName}/details`),
-          title: 'View Department Details',
+          onClick: () => navigate(`${record.schoolName}/details`),
+          // title: 'View School Details',
         })}
         // scroll={{
         //   x: 720,
         // }}
         rowKey={(record) =>
-          record.id ? record.id.toString() : record.departmentName
+          record.id ? record.id.toString() : record.schoolName
         }
         //  pagination={{
         //         current: workers.number + 1,
@@ -77,4 +82,4 @@ const AdminDepartmentsView = () => {
   );
 };
 
-export default AdminDepartmentsView;
+export default AdminSchoolView;

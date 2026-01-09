@@ -5,13 +5,13 @@ import styles from './terms.module.scss';
 
 // import { sampleMarkdown } from '../privacy-policy/sample';
 import NavbarOrganism from '../../components/Navbar/Navbar.organism';
-import Footer from '../../components/footer.component';
 import { Flex, Spin } from 'antd';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Chatbot from '../../components/chatbot/Chatbot';
 
 const TermsAndConditionPage = () => {
-  const { content, loading } = useGetContentDocuments('terms-and-conditions');
+  const [loading] = useState(false);
+  // const { content, loading } = useGetContentDocuments('terms-and-conditions');
   useEffect(() => {
     //Navigate to top page smoothly.
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -33,13 +33,13 @@ const TermsAndConditionPage = () => {
           </div> */}
           <main
             className={styles['terms_and_condition_container']}
-            dangerouslySetInnerHTML={{ __html: content?.content ?? '' }}
+            dangerouslySetInnerHTML={{ __html: '' }}
           ></main>
           <div></div>
         </div>
       )}
       <Chatbot />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

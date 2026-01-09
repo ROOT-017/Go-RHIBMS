@@ -1,28 +1,21 @@
 import { useTranslation } from 'react-i18next';
 import { Input, Space } from 'antd';
 import logo from '../../assets/logos/rhibms-logo.png';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { pathnames } from '../../routes/path-name';
 // import { Alert } from 'antd';
 import './style.scss';
 import { ButtonPrimary } from '../../components/design-system/buttons';
 import { PasswordInput } from '../../components/Input/PasswordInput';
 import { Footer } from '../../components/Footer/footer';
-import { useQueryParams } from '../../hooks/common.hooks';
+import { useLoginSignup } from '../../hooks/auth.hooks';
 
 export default function LoginPage() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
-  const query = useQueryParams();
-  // const {
-  //   inputValues,
-  //   onInputChange,
-  //   onSubmit,
-  //   onBlur,
-  //   isLoading,
-  //   error,
-  //   message,
-  // } = useLoginSignup('login');
+  // const navigate = useNavigate();
+  // const query = useQueryParams();
+  const { inputValues, onInputChange, onSubmit, isLoading } =
+    useLoginSignup();
 
   return (
     <div className="maincontainer">
@@ -56,7 +49,7 @@ export default function LoginPage() {
                 action=""
                 onSubmit={(e) => {
                   e.preventDefault();
-                  // onSubmit();
+                  onSubmit();
                 }}
                 className="w-full"
               >
@@ -70,7 +63,7 @@ export default function LoginPage() {
                       name="email"
                       placeholder="matriculation number"
                       type="email"
-                      // onChange={onInputChange}
+                      onChange={onInputChange}
                       // onBlur={onBlur}
                       // status={error?.email ? 'error' : ''}
                     />
@@ -83,29 +76,26 @@ export default function LoginPage() {
                     <PasswordInput
                       className="h-[35px]"
                       name="password"
-                      // value={inputValues.password}
-                      // onChange={onInputChange}
-                      // placeholder="Password"
+                      value={inputValues.password}
+                      onChange={onInputChange}
+                      placeholder="Password"
                       // onBlur={onBlur}
-                      minLength={8}
+                      minLength={6}
                       // status={error?.password ? 'warning' : ''}
                     />
                   </div>
                 </div>
                 <div className="flex flex-col w-full md:flex-row md:gap-8 justify-center mt-[10px] items-center ">
                   <ButtonPrimary
-                    // loading={isLoading.email}
-                    // disabled={
-                    //   isLoading.email ||
-                    //   error?.email != null ||
-                    //   !inputValues.password ||
-                    //   !inputValues.email
-                    // }
-                    onClick={() =>
-                      navigate(
-                        query.u === 'admin' ? '/admin/dashboard' : '/dashboard',
-                      )
+                    loading={isLoading}
+                    disabled={
+                      isLoading || !inputValues.password || !inputValues.email
                     }
+                    // onClick={() =>
+                    //   navigate(
+                    //     query.u === 'admin' ? '/admin/dashboard' : '/dashboard',
+                    //   )
+                    // }
                     htmlType="submit"
                     className="flex justify-evenly items-center w-[90%] md:w-[70%] h-[35px]"
                   >
