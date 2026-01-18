@@ -8,13 +8,13 @@ import './style.scss';
 import { ButtonPrimary } from '../../components/design-system/buttons';
 import { PasswordInput } from '../../components/Input/PasswordInput';
 import { Footer } from '../../components/Footer/footer';
-import { useLoginSignup } from '../../hooks/auth.hooks';
+import { useAdminLogin } from '../../hooks/auth.hooks';
 // import { ErrorLabel } from '../../components/Input/ErrorLabel';
 
 export default function LoginPage() {
   const { t } = useTranslation();
-  const { inputValues, onInputChange, onSubmit, isLoading } =
-    useLoginSignup('admin');
+    const { inputValues, isLoading, onInputChange, onSubmit } = useAdminLogin();
+
 
   return (
     <div className="maincontainer">

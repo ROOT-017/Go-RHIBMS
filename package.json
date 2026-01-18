@@ -78,6 +78,7 @@
     "postcss": "^8.4.33",
     "prettier": "^3.2.4",
     "sass": "^1.70.0",
+    "supabase": "^2.72.8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",

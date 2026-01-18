@@ -13,26 +13,30 @@ import Dashboard from '../pages/student/student-dashboard';
 import AdminSchoolView from '../pages/admin/AdminSchoolView';
 import AcademicStructure from '../pages/student/AcademicStructure';
 import FormB from '../pages/student/FormB';
+import { PublicRoute } from '../components/PublicRoute';
+import { AuthGuard } from '../components/Gaurd/AuthGuard';
 
 export const routes: Array<RouteObject> = [
   {
     path: pathnames.HOME,
-    element: pages.HomePage,
+    element: <PublicRoute>{pages.HomePage}</PublicRoute>,
     errorElement: <Error404 />,
   },
 
   {
     path: pathnames.LOGIN,
-    element: pages.LoginPage,
+    element: <PublicRoute restricted>{pages.LoginPage}</PublicRoute>,
   },
   {
     path: pathnames.LOGIN_ADMIN,
-    element: pages.LoginAdminPage,
+    element: <PublicRoute restricted>{pages.LoginAdminPage}</PublicRoute>,
   },
   {
     path: pathnames.DASHBOARD,
     element: (
-      <DashboardLayout />
+      <AuthGuard requiredRole="student">
+        <DashboardLayout />
+      </AuthGuard>
       // <AuthGuard element={<DashboardLayout />} failTo={pathnames.LOGIN} />
     ),
     children: [
@@ -53,7 +57,11 @@ export const routes: Array<RouteObject> = [
 
   {
     path: pathnames.ADMIN_DASHBOARD,
-    element: <AdminLayout />,
+    element: (
+      <AuthGuard requiredRole="admin">
+        <AdminLayout />
+      </AuthGuard>
+    ),
     children: [
       {
         element: pages.AdminDashboard,

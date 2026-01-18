@@ -14,21 +14,7 @@ export const useAdminManageStudents = () => {
     program: undefined,
     searchTerm: undefined,
   });
-  const [data] = useState<Student[]>([
-    {
-      date_of_birth: '11/11/2006',
-      program_id: 'Computer Science and Network',
-      // fullName: 'Jane Doe',
-      matricule: '24-CSN-0024',
-      placeOfBirth: 'Muea',
-      profile_id: 'BSc',
-      gender: 'Female',
-      email: 'jane@example.com',
-      id: '1',
-      created_at: '',
-      level: '',
-    },
-  ]);
+  const [data] = useState<Student[]>([]);
   const onChangeFilters = (
     //eslint-disable-next-line
     key: keyof typeof filters | (string & {}),
@@ -64,20 +50,7 @@ export const useAddStudent = () => {
 };
 
 export const useAddCourse = () => {
-  const [data, setData] = useState<Course>({
-    code: '',
-    title: '',
-    // department: '',
-    level: '',
-    semester: null,
-    // school: '',
-    credit: 0,
-    // year: '',
-    lecturer_id: '',
-    program_id: '',
-    created_at: '',
-    id: '',
-  });
+  const [data, setData] = useState<Course[]>([]);
   const [loading, _setLoading] = useState(false);
   const onChange = (
     key: keyof typeof data,
@@ -98,23 +71,7 @@ export const useAdminManageCourses = () => {
     program: undefined,
     searchTerm: undefined,
   });
-  const [data] = useState<Course[]>([
-    {
-      code: 'CSN101',
-      title: 'Introduction to Computer Science',
-      credit: 3,
-      // department: 'Computer Science and Network',
-      level: '100',
-      semester: null,
-      // school: 'School of Engineering',
-      // year: '2024',
-      id: '',
-      lecturer_id: '',
-      created_at: '',
-      program_id: '',
-    },
-    // Add more courses as needed
-  ]);
+  const [data] = useState<Course[]>([]);
   const onChangeFilters = (
     //eslint-disable-next-line
     key: keyof typeof filters | (string & {}),

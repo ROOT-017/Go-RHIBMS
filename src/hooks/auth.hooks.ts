@@ -1,7 +1,13 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useDispatch } from '../store';
-import { loginUser } from '../store/features/slices/auth.slice';
+import {
+  loginAdmin,
+  loginStudent,
+  loginUser,
+  logoutUser,
+} from '../store/features/slices/auth.slice';
+import { useNavigate } from 'react-router-dom';
 
 // type UserType = 'admin' | 'student';
 
@@ -77,7 +83,84 @@ import { loginUser } from '../store/features/slices/auth.slice';
 //   };
 // };
 
-export const useLoginSignup = () => {
+// export const useLoginSignup = () => {
+//   const dispatch = useDispatch();
+
+//   const [inputValues, setInputValues] = useState({
+//     email: '',
+//     password: '',
+//   });
+
+//   const [isLoading] = useState(false);
+
+//   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+//     const { name, value } = e.target;
+//     setInputValues((prev) => ({ ...prev, [name]: value }));
+//   };
+
+//   const onSubmit = async () => {
+//     const result = await dispatch(loginUser(inputValues));
+
+//     if (loginUser.rejected.match(result)) {
+//       toast.error(result.payload || 'Login failed');
+//     } else {
+//       toast.success('Login successful');
+//     }
+//   };
+//   const handleEnter = (e: KeyboardEvent) => {
+//     if (e.key === 'Enter') {
+//       onSubmit();
+//     }
+//   };
+
+//   return {
+//     inputValues,
+//     isLoading,
+//     onInputChange,
+//     onSubmit,
+//     handleEnter,
+//   };
+// };
+// export const useAdminLogin = () => {
+//   const dispatch = useDispatch();
+
+//   const [inputValues, setInputValues] = useState({
+//     email: '',
+//     password: '',
+//   });
+
+//   const [isLoading] = useState(false);
+
+//   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+//     const { name, value } = e.target;
+//     setInputValues((prev) => ({ ...prev, [name]: value }));
+//   };
+
+//   const onSubmit = async () => {
+//     const result = await dispatch(loginUser(inputValues));
+
+//     if (loginUser.rejected.match(result)) {
+//       toast.error(result.payload || 'Login failed');
+//     } else {
+//       toast.success('Login successful');
+//     }
+//   };
+//   const handleEnter = (e: KeyboardEvent) => {
+//     if (e.key === 'Enter') {
+//       onSubmit();
+//     }
+//   };
+
+//   return {
+//     inputValues,
+//     isLoading,
+//     onInputChange,
+//     onSubmit,
+//     handleEnter,
+//   };
+// };
+
+export const useAdminLogin = () => {
   const dispatch = useDispatch();
 
   const [inputValues, setInputValues] = useState({
@@ -85,7 +168,7 @@ export const useLoginSignup = () => {
     password: '',
   });
 
-  const [isLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -93,14 +176,22 @@ export const useLoginSignup = () => {
   };
 
   const onSubmit = async () => {
-    const result = await dispatch(loginUser(inputValues));
+    if (!inputValues.email || !inputValues.password) {
+      toast.error('Please fill in all fields');
+      return;
+    }
 
-    if (loginUser.rejected.match(result)) {
+    setIsLoading(true);
+    const result = await dispatch(loginAdmin(inputValues));
+    setIsLoading(false);
+
+    if (loginAdmin.rejected.match(result)) {
       toast.error(result.payload || 'Login failed');
     } else {
-      toast.success('Login successful');
+      toast.success('Admin login successful');
     }
   };
+
   const handleEnter = (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
       onSubmit();
@@ -113,5 +204,122 @@ export const useLoginSignup = () => {
     onInputChange,
     onSubmit,
     handleEnter,
+  };
+};
+
+export const useStudentLogin = () => {
+  const dispatch = useDispatch();
+
+  const [inputValues, setInputValues] = useState({
+    matricule: '',
+    password: '',
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setInputValues((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const onSubmit = async () => {
+    if (!inputValues.matricule || !inputValues.password) {
+      toast.error('Please fill in all fields');
+      return;
+    }
+
+    setIsLoading(true);
+    const result = await dispatch(loginStudent(inputValues));
+    setIsLoading(false);
+
+    if (loginStudent.rejected.match(result)) {
+      toast.error(result.payload || 'Login failed');
+    } else {
+      toast.success('Student login successful');
+    }
+  };
+
+  const handleEnter = (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      onSubmit();
+    }
+  };
+
+  return {
+    inputValues,
+    isLoading,
+    onInputChange,
+    onSubmit,
+    handleEnter,
+  };
+};
+
+export const useLogin = () => {
+  const dispatch = useDispatch();
+
+  const [inputValues, setInputValues] = useState({
+    identifier: '', // Can be email or matricule
+    password: '',
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setInputValues((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const onSubmit = async () => {
+    if (!inputValues.identifier || !inputValues.password) {
+      toast.error('Please fill in all fields');
+      return;
+    }
+
+    setIsLoading(true);
+    const result = await dispatch(loginUser(inputValues));
+    setIsLoading(false);
+
+    if (loginUser.rejected.match(result)) {
+      toast.error(result.payload || 'Login failed');
+    }
+    // Success toast will be shown based on user role in component
+  };
+
+  const handleEnter = (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      onSubmit();
+    }
+  };
+
+  return {
+    inputValues,
+    isLoading,
+    onInputChange,
+    onSubmit,
+    handleEnter,
+  };
+};
+
+export const useLogout = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const performLogout = useCallback(async () => {
+    try {
+      const result = await dispatch(logoutUser());
+
+      if (logoutUser.rejected.match(result)) {
+        toast.error(result.payload || 'Logout failed');
+      } else {
+        toast.success('Logged out successfully');
+        navigate('/'); 
+      }
+    } catch {
+      toast.error('An unexpected error occurred');
+    }
+  }, [dispatch, navigate]);
+
+  return {
+    logout: performLogout,
   };
 };

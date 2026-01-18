@@ -109,6 +109,7 @@ const StudentNavbar = () => {
             className={({ isActive }) =>
               `text-2xl text-white hover:bg-white p-4 hover:text-primaryColor ${isActive ? 'bg-white !text-primaryColor' : 'text-white'}`
             }
+            key={elt.key}
             end
           >
             {elt.name}

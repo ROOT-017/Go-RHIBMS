@@ -8,14 +8,14 @@ import './style.scss';
 import { ButtonPrimary } from '../../components/design-system/buttons';
 import { PasswordInput } from '../../components/Input/PasswordInput';
 import { Footer } from '../../components/Footer/footer';
-import { useLoginSignup } from '../../hooks/auth.hooks';
+import { useStudentLogin } from '../../hooks/auth.hooks';
 
 export default function LoginPage() {
   const { t } = useTranslation();
   // const navigate = useNavigate();
   // const query = useQueryParams();
-  const { inputValues, onInputChange, onSubmit, isLoading } =
-    useLoginSignup();
+  const { inputValues, isLoading, onInputChange, onSubmit } = useStudentLogin();
+
 
   return (
     <div className="maincontainer">
@@ -60,14 +60,10 @@ export default function LoginPage() {
                     </label>
                     <Input
                       className="h-[35px]"
-                      name="email"
+                      name="matricule"
                       placeholder="matriculation number"
-                      type="email"
                       onChange={onInputChange}
-                      // onBlur={onBlur}
-                      // status={error?.email ? 'error' : ''}
                     />
-                    {/* <ErrorLabel error={error?.email} className="absolute" /> */}
                   </div>
                   <div className="flex flex-col gap-2 flex-1 mb-4">
                     <label className="require-field require-field text-[1.6rem] text-[#241773] font-[600]">
@@ -89,7 +85,7 @@ export default function LoginPage() {
                   <ButtonPrimary
                     loading={isLoading}
                     disabled={
-                      isLoading || !inputValues.password || !inputValues.email
+                      isLoading || !inputValues.password || !inputValues.matricule
                     }
                     // onClick={() =>
                     //   navigate(

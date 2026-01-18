@@ -4,17 +4,19 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { currentPathName, currentSearchParams } from '../utils';
 
 export const usePrincipal = () => {
-  const principal = useSelector((state) => state.user.payload);
-  return principal;
-};
-export const usePrincipalError = () => {
-  const errors = useSelector((state) => state.user.errors);
-  return errors;
-};
+  const user = useSelector((state) => state.auth.user);
+  const profile = useSelector((state) => state.auth.profile);
+  const session = useSelector((state) => state.auth.session);
+  const student = useSelector((state) => state.auth.student);
+  const admin = useSelector((state) => state.auth.admin);
 
-export const useUserRole = () => {
-  const principal = usePrincipal();
-  return principal?.role?.name ? principal?.role?.name : undefined;
+  return {
+    ...user,
+    ...profile,
+    session,
+    student,
+    admin,
+  };
 };
 
 export const useOnChangeQueryParams = () => {
@@ -34,11 +36,6 @@ export const useQueryParams = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   return Object.fromEntries(query.entries());
-};
-
-export const useAuthorities = () => {
-  const principal = usePrincipal();
-  return principal?.authorities;
 };
 
 export const useDebounce = <T extends unknown[]>(

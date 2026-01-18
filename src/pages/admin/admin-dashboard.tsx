@@ -4,6 +4,7 @@ import { colors } from '../../assets/colors';
 import UserProfileCard from '../../components/Card/UserProfileCard';
 import Chatbot from '../../components/chatbot/Chatbot';
 import profile from '../../assets/profile.jpg';
+import { usePrincipal } from '../../hooks/common.hooks';
 
 interface DashboardCardProps {
   label: string;
@@ -58,19 +59,21 @@ const dashboardData: DashboardCardProps[] = [
   },
 ];
 const AdminDashboard = () => {
-  const userdata = {
-    name: 'John Doe',
-    profile_url: profile,
-    email: 'john@example.com',
-    phone: '123456789',
-    location: 'Muea, Buea',
-  };
+  const principal = usePrincipal();
   return (
     <>
       <Chatbot />
       <div className="justify-center gap-8 flex flex-col lg:flex-row items-center lg:items-start">
         <div>
-          <UserProfileCard {...userdata} />
+          <UserProfileCard
+            email={principal?.email ?? ''}
+            name={principal?.full_name ?? ''}
+            location={'Muea, Buea'}
+            phone={
+              principal?.phone?.trim().length ? principal?.phone : '123456789'
+            }
+            profile_url={profile}
+          />
         </div>
         <div className="flex lg:flex-co flex-wrap justify-center  w-full items-center lg:w-[60%]  lg:flex  pt-4 grid-cols-2 grid-rows-2 gap-8 mb-14">
           {dashboardData.map((elt) => (

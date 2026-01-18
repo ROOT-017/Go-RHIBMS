@@ -4,6 +4,7 @@ import { LazyExoticComponent, ReactNode } from 'react';
 import { Location } from 'react-router-dom';
 import { AppDispatch } from '../store';
 import { PostgrestError } from '@supabase/supabase-js';
+import { MenuProps } from 'antd';
 
 export type BeforeLogoutCallback = () => Promise<boolean>;
 export type BeforeLogoutRegister = (props: BeforeLogoutCallback) => () => void;
@@ -83,139 +84,371 @@ export interface BaseEntity {
   created_at?: string;
 }
 
-export type UserRole = 'student' | 'admin';
-export type FeeStatus = 'paid' | 'unpaid' | 'partial';
+// ========== DATABASE SCHEMA TYPES ==========
+
+export type UserRole = 'admin' | 'student' | 'lecturer';
+export type FeeStatus = 'unpaid' | 'partially_paid' | 'paid';
+export type ProgramLevel = 'certificate' | 'diploma' | 'hnd' | 'bsc' | 'msc' | 'phd';
+
+// User Types (from profiles table)
 export interface Profile extends BaseEntity {
-  id: UUID; // same as auth.users.id
+  id: string; // Same as auth.users.id
   full_name: string | null;
   email: string;
   role: UserRole;
 }
 
-export interface Student extends BaseEntity {
-  profile_id: UUID;
-  matricule: string;
-  placeOfBirth: string;
-  date_of_birth: string | null;
-  gender: string | null;
-  program_id: UUID;
-  level: string; // HND 1, HND 2
-  email: string;
+// School Structure Types
+export interface School extends BaseEntity {
+  name: string;
+  description?: string;
 }
-export interface Admin extends BaseEntity {
-  profile_id: UUID;
-  position: string;
-}
-
-export interface Lecturer extends BaseEntity {
-  full_name: string;
-  email: string;
-  department_id: UUID;
-}
-
-export interface Result extends BaseEntity {
-  student_id: UUID;
-  course_id: UUID;
-  ca_score: number | null;
-  exam_score: number | null;
-  total_score: number | null;
-  grade: string | null;
-}
-export interface Registration extends BaseEntity {
-  student_id: UUID;
-  course_id: UUID;
-  academic_year: string;
-}
-export interface Result extends BaseEntity {
-  student_id: UUID;
-  course_id: UUID;
-  ca_score: number | null;
-  exam_score: number | null;
-  total_score: number | null;
-  grade: string | null;
-}
-export interface Fee extends BaseEntity {
-  student_id: UUID;
-  academic_year: string;
-  amount: number;
-  status: FeeStatus;
-}
-
-export interface Registration extends BaseEntity {
-  student_id: UUID;
-  course_id: UUID;
-  academic_year: string;
-}
-export interface Course extends BaseEntity {
-  program_id: UUID;
-  lecturer_id: UUID | null;
-  code: string;
-  title: string;
-  credit: number;
-  level: string;
-  semester: number | null;
-}
-
-export type Course = {
-  id?: number;
-  courseTitle: string;
-  courseCode: string;
-  creditUnits: number;
-  department: string;
-  school: string;
-  level: string;
-  semester: string | null;
-  year: string;
-};
-
-// export type Program = {
-//   id?: number;
-//   programName: string;
-//   programType: string;
-//   department: string;
-//   school: string;
-// };
-
-// export type Department = {
-//   id?: number;
-//   departmentName: string;
-//   school: string;
-// };
 
 export interface Department extends BaseEntity {
-  school_id: UUID;
+  school_id: string;
   name: string;
+  school?: School;
 }
 
 export interface Program extends BaseEntity {
-  department_id: UUID;
+  department_id: string;
   name: string;
-  award: string; // HND, BSc
+  award: string; // HND, BSc, MSc, PhD, etc.
   duration_years: number;
+  department?: Department;
 }
 
-export interface School extends BaseEntity {
+// Academic Structure Types
+export interface Semester extends BaseEntity {
   name: string;
-  description: string | null;
+  code: string;
+  order_number: number;
+  description?: string;
 }
 
+export interface AcademicYear extends BaseEntity {
+  year: string;
+  is_active: boolean;
+  start_date?: string;
+  end_date?: string;
+}
+
+// Lecturer Types
+export interface Lecturer extends BaseEntity {
+  full_name: string;
+  email: string;
+  department_id: string;
+  department?: Department;
+}
+
+// Course Types (Single definition - matches database schema)
+export interface Course extends BaseEntity {
+  program_id: string;
+  lecturer_id?: string | null; // Optional, can be null
+  code: string;
+  title: string;
+  credit: number;
+  semester_id?: string; // Changed from 'semester' (number) to 'semester_id' (uuid)
+  department_id?: string;
+  program_level?: ProgramLevel;
+  is_elective?: boolean;
+  program?: Program;
+  lecturer?: Lecturer;
+  semester?: Semester;
+  department?: Department;
+}
+
+// Student Types (Updated to match database schema)
+export interface Student extends BaseEntity {
+  profile_id: string;
+  matricule: string;
+  date_of_birth?: string;
+  gender?: string;
+  program_id: string;
+  level: ProgramLevel; // Changed from string to ProgramLevel
+  admission_year?: number;
+  current_semester: number;
+  fee_status: FeeStatus;
+  fee_balance: number;
+  total_fee: number;
+  is_active?: boolean;
+  profile?: Profile;
+  program?: Program;
+  department?: Department;
+}
+
+// Admin Types
+export interface Admin extends BaseEntity {
+  profile_id: string;
+  position: string;
+  profile?: Profile;
+}
+
+// Registration Types (Form B)
+export interface Registration extends BaseEntity {
+  student_id: string;
+  course_id: string;
+  academic_year: string;
+  semester_id?: string;
+  status: 'registered' | 'in_progress' | 'completed' | 'failed' | 'dropped';
+  grade?: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'I';
+  score?: number;
+  student?: Student;
+  course?: Course;
+  semester?: Semester;
+}
+
+// Fee Types
+export interface Fee extends BaseEntity {
+  student_id: string;
+  academic_year: string;
+  amount: number;
+  status: FeeStatus;
+  student?: Student;
+}
+
+export interface FeeTransaction extends BaseEntity {
+  student_id: string;
+  amount: number;
+  transaction_type: 'payment' | 'adjustment' | 'refund';
+  payment_method?: string;
+  reference_number?: string;
+  description?: string;
+  status: 'pending' | 'completed' | 'failed' | 'cancelled';
+  academic_year_id?: string;
+  processed_by?: string;
+  student?: Student;
+  academic_year?: AcademicYear;
+}
+
+// Result Types
+export interface Result extends BaseEntity {
+  student_id: string;
+  course_id: string;
+  ca_score?: number;
+  exam_score?: number;
+  total_score?: number;
+  grade?: string;
+  student?: Student;
+  course?: Course;
+}
+
+// Organigramme Types
+export interface Organigramme extends BaseEntity {
+  title: string;
+  description?: string;
+  image_url: string;
+  school_id: string;
+  is_active: boolean;
+  uploaded_by?: string;
+  school?: School;
+}
+
+// Academic Structure Types
+export interface AcademicStructure extends BaseEntity {
+  program_id: string;
+  semester_id: string;
+  course_id: string;
+  is_mandatory: boolean;
+  program?: Program;
+  semester?: Semester;
+  course?: Course;
+}
+
+// System Settings Types
+export interface SystemSetting extends BaseEntity {
+  key: string;
+  value: any;
+  description?: string;
+  updated_by?: string;
+  updated_at: string;
+}
+
+// ========== DTO TYPES ==========
+
+// Student Creation DTO (for admin)
+export interface CreateStudentDTO {
+  matricule: string;
+  email: string;
+  password: string;
+  full_name: string;
+  date_of_birth?: string;
+  gender?: string;
+  program_id: string;
+  level: ProgramLevel;
+  admission_year?: number;
+  current_semester?: number;
+  total_fee?: number;
+}
+
+// Student Update DTO
+export interface UpdateStudentDTO {
+  matricule?: string;
+  full_name?: string;
+  date_of_birth?: string;
+  gender?: string;
+  program_id?: string;
+  level?: ProgramLevel;
+  current_semester?: number;
+  fee_status?: FeeStatus;
+  fee_balance?: number;
+  total_fee?: number;
+}
+
+// Course Creation DTO
+export interface CreateCourseDTO {
+  program_id: string;
+  lecturer_id?: string | null;
+  code: string;
+  title: string;
+  credit: number;
+  semester_id?: string;
+  department_id?: string;
+  program_level?: ProgramLevel;
+  is_elective?: boolean;
+}
+
+// Course Update DTO
+export interface UpdateCourseDTO {
+  lecturer_id?: string | null;
+  code?: string;
+  title?: string;
+  credit?: number;
+  semester_id?: string;
+  department_id?: string;
+  program_level?: ProgramLevel;
+  is_elective?: boolean;
+}
+
+export interface StudentLoginData {
+  student_id: string;
+  profile_id: string;
+  matricule: string;
+  program_id: string;
+  level: ProgramLevel;
+  profile_email: string;
+  profile_full_name: string;
+}
+
+// ========== VIEW/COMPOSITE TYPES ==========
+
+// Student with related data (for student dashboard)
 export interface StudentWithProfile {
   student: Student;
   profile: Profile;
   program: Program;
+  department?: Department;
+  school?: School;
 }
+
+// Course with lecturer (for course listings)
 export interface CourseWithLecturer {
   course: Course;
-  lecturer: Lecturer;
+  lecturer?: Lecturer;
+  program?: Program;
+  semester?: Semester;
 }
+
+// Form B View (Student's registered courses)
+export interface FormBView {
+  student_id: string;
+  matricule: string;
+  full_name: string;
+  program_name: string;
+  award: string;
+  academic_year: string;
+  semester_name: string;
+  semester_order: number;
+  course_code: string;
+  course_title: string;
+  course_credit: number;
+  lecturer_name?: string;
+  registration_status: string;
+  grade?: string;
+  score?: number;
+}
+
+// Dashboard Stats
+export interface DashboardStats {
+  total_students: number;
+  total_lecturers: number;
+  total_courses: number;
+  total_programs: number;
+  pending_fees: number;
+  active_academic_year?: string;
+}
+
+// ========== AUTH TYPES ==========
+
+export interface LoginCredentials {
+  matricule: string;
+  password: string;
+}
+
+export interface AuthResponse {
+  user: {
+    id: string;
+    email: string;
+  };
+  profile: Profile;
+  student?: Student;
+  admin?: Admin;
+  lecturer?: Lecturer;
+  session: {
+    access_token: string;
+    refresh_token: string;
+  };
+}
+
+// ========== RESPONSE TYPES ==========
+
+// Supabase Response (generic)
 export interface SupabaseResponse<T> {
   data: T | null;
   error: PostgrestError | null;
 }
-export type StatusConfig = {
-  color: string;
-  label: string;
-};
+
+// Paginated Response
+export interface PaginatedResponse<T> {
+  data: T[];
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+}
+
+// ========== FORM TYPES ==========
+
+// Student Form Data (for admin interface)
+export interface StudentFormData {
+  matricule: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  dateOfBirth: string;
+  gender: string;
+  programId: string;
+  level: ProgramLevel;
+  admissionYear: number;
+  currentSemester: number;
+  totalFee: number;
+}
+
+// Course Form Data
+export interface CourseFormData {
+  program_id: string;
+  lecturer_id?: string;
+  code: string;
+  title: string;
+  credit: number;
+  semester_id?: string;
+  department_id?: string;
+  program_level?: ProgramLevel;
+  is_elective?: boolean;
+}
+
+// ========== YOUR EXISTING TYPES (UNCHANGED) ==========
+
 export type PageResponse<T> = {
   data: T[];
   page: number;
@@ -257,30 +490,6 @@ export type Pageable = {
   sort?: string[];
 };
 
-export type PositionSalary = {
-  createdAt?: string;
-  updatedAt?: string;
-  deletedAt?: string;
-  id?: number;
-  stateOfficialId?: string;
-  natAvg: number;
-  costLivingIndex: number;
-  clvDelta: number;
-  hrRateAdj: number;
-  medSyncMargin: number;
-  state?: State;
-  jobPosition?: JobPosition;
-};
-
-export type Field = {
-  label: string;
-  name: string;
-  type: string;
-  options?: { label: string; value: string }[];
-  placeholder: string;
-  required: boolean;
-};
-
 export type ListOfRequest<T> = {
   data: T[];
 };
@@ -297,186 +506,7 @@ export type IntRange<F extends number, T extends number> = Exclude<
   Enumerate<F>
 >;
 
-export type PasswordResetRequest = {
-  email: string;
-  password: string;
-  code: string;
-};
-
-export type PasswordUpdateRequest = {
-  newPassword: string;
-  oldPassword: string;
-  code: string;
-};
-
-export type UserHasApplicationResponse = {
-  hasApplied: boolean;
-  hasWithdrawn: boolean;
-  canApply: boolean;
-  withdrawCount: number;
-};
-
-export type JobPostSentiment = {
-  id?: number;
-  jobPostId: number;
-  userId: number;
-  sentiment: string;
-};
-
-export type MedicalTestRecord = {
-  id?: number;
-  testName: string;
-  testType: string;
-  issueDate: string;
-  expiryDate?: string;
-  recordDocumentSrc?: string;
-  recordDocumentKey?: string;
-  jsonRepresentation: string;
-  file?: File;
-};
-
 export type TypedRecord<R, T = unknown> = Record<keyof R, T>;
-
-export type TBQuestionnaire = {
-  id?: number;
-  fullName: string;
-  userId: string;
-  date: string;
-  completionDate: string;
-  signature?: string;
-  signature1?: string;
-  signature2?: string;
-  testPositiveForPPDTest: boolean | undefined;
-  testPositiveForTBTest: boolean | undefined;
-  hadBCGVaccineAndTestPositive: boolean | undefined;
-};
-
-export type TBSymtomsCheck = {
-  coughingLasting3Weeks?: boolean;
-  coughtingOfBloodOrSputum?: boolean;
-  chestPain?: boolean;
-  weakenessOrFatigue?: boolean;
-  weightLostAndOrNoAppetite?: boolean;
-  nightSweats?: boolean;
-  chills?: boolean;
-  fever?: boolean;
-  iHaveNoTBSymtoms?: boolean;
-};
-
-export type TBRiskAssessment = {
-  residentInCountryWithHighTBRate: boolean | undefined;
-  currentlyOrPlanToHaveImmunosppression: boolean | undefined;
-  hadContactWithSomeoneWithTBInfection: boolean | undefined;
-};
-
-export type MedChangeEventTarget = {
-  target: {
-    name: string;
-    value?: string;
-    validity?: Partial<ValidityState>;
-    checked?: boolean;
-  };
-};
-
-export type AvailabilityBookingBare = {
-  id: number;
-  candidateId: number;
-  bookingDate: string;
-  bookingStartTime: string | null;
-  bookingEndTime: string | null;
-  status: string | null;
-  title: string | null;
-  slotId: number;
-  candidate: null;
-  availabilitySlot: null;
-} & EntityWithTimestampAudits;
-
-export type RecurringAvailability = {
-  id: number;
-  daysOfWeek: string[] | null;
-  startDate: string | null;
-  endDate: string | null;
-  slotId: number;
-} & EntityWithTimestampAudits;
-
-export type AvailabilitySlotResponse = {
-  id: number;
-  booked: boolean | null;
-  notes: string;
-  date: string;
-  startTime: string;
-  endTime: string;
-  recurring: boolean | null;
-  userId: number;
-  recurringAvailability: RecurringAvailability | null;
-  availabilityBookings: AvailabilityBookingBare[] | null;
-} & EntityWithTimestampAudits;
-
-export type TemporalRequest = {
-  date: string; // yyyy-MM-dd
-  startTime: string; // HH:mm:ss
-  endTime?: string; // HH:mm:ss
-};
-
-export type InterviewScheduleRequest = {
-  availabilityId: number;
-} & TemporalRequest;
-
-export type InterviewRescheduleRequest = {
-  bookingId: number;
-} & Partial<InterviewScheduleRequest>;
-
-export type LocationData = {
-  state: string;
-  address: string;
-  country: string;
-  email: string;
-  city: string;
-  phone: string;
-  zipCode: string;
-  phoneType: string;
-};
-
-export type AvailabilityBooking = {
-  id: number;
-  candidate: Candidate;
-  bookingDate: string;
-  bookingStartTime: string;
-  bookingEndTime: string;
-  status: string;
-  title: string;
-  availabilitySlot: AvailabilitySlotResponse;
-} & EntityWithTimestampAudits;
-
-type CalendarRange = {
-  start_date: string;
-  end_date: string;
-  start_time?: string;
-  end_time?: string;
-};
-
-export type userInfo = Omit<
-  PersonalDataType,
-  | 'websites'
-  | 'summary'
-  | 'preferredName'
-  | 'state'
-  | 'zipCode'
-  | 'state'
-  | 'street'
-> & {
-  ssn: string;
-};
-
-export type userAddress = {
-  street: string;
-  city: string;
-  state: string;
-  zipCode: string;
-  dateMovedIn: string;
-  unit: string;
-  country: string;
-};
 
 export type MenuProperties = {
   label: React.ReactNode;
@@ -487,11 +517,6 @@ export type MenuProperties = {
   type?: 'group';
 };
 export type MenuItem = Required<MenuProps>['items'][number];
-
-export type StatusConfig = {
-  color: string;
-  label: string;
-};
 
 export type RequestError = {
   code: string;
@@ -527,11 +552,11 @@ export type DisplayUser = {
 } & EntityWithTimestampAudits;
 
 export type Fn = () => void;
-export type defaultMenuItems =
-  | 'dashboard'
-  | 'profile'
-  | 'customer-service'
-  | 'settings'
-  | 'logout';
 
-export type TemporalUnit = 'day' | 'hour' | 'minute' | 'second' | 'millisecond';
+// Add this if EntityWithTimestampAudits is missing
+export interface EntityWithTimestampAudits {
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: string;
+  updatedBy?: string;
+}
