@@ -1,5 +1,4 @@
 // src/DoughnutChart.tsx
-import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
@@ -10,7 +9,7 @@ interface PieChartProps {
   labels: string[];
 }
 
-const PieChart: React.FC<PieChartProps> = ({ data1,labels }) => {
+const PieChart: React.FC<PieChartProps> = ({ data1, labels }) => {
   const data = {
     labels,
     datasets: [

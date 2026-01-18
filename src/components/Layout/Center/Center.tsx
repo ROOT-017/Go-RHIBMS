@@ -1,6 +1,4 @@
 import { Flex, FlexProps } from 'antd';
-import React from 'react';
-
 interface Props extends FlexProps {
   children: React.ReactNode;
 }

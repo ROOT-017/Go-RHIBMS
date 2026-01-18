@@ -1,16 +1,11 @@
-import { FlexContainer } from '../../components/flex-container';
-import LabeledInputMolecule from '../../components/LabeledInput/LabeledInput.molecule';
-import LabelSelectMolecule from '../../components/Input/LabelSelectMolecule';
 import Center from '../../components/Layout/Center/Center';
 import { ButtonPrimary } from '../../components/design-system/buttons';
 import { useAddCourse } from '../../hooks/admin.hooks';
-import { academicLevel, Semester } from '../../constants';
-import LabeledDateInputMolecule from '../../components/LabeledDateInput/LabeledDateInput.molecule';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
 const AddCourses = () => {
-  const { data, onChange, loading, handleAddSubmit } = useAddCourse();
+  const { loading, handleAddSubmit } = useAddCourse();
   const navigate = useNavigate();
 
   return (
@@ -27,7 +22,7 @@ const AddCourses = () => {
       </div>
       <div className="w-full lg:w-[60%]">
         <div className="flex w-full gap-8 mt-[20px] flex-col md:flex-row flex-wrap">
-          <FlexContainer labelRequired={false} label={''}>
+          {/* <FlexContainer labelRequired={false} label={''}>
             <LabeledInputMolecule
               inputProps={{
                 required: true,
@@ -38,8 +33,8 @@ const AddCourses = () => {
               required
               label="Course Title"
             />
-          </FlexContainer>
-          <FlexContainer labelRequired={false} label={''}>
+          </FlexContainer> */}
+          {/* <FlexContainer labelRequired={false} label={''}>
             <LabeledInputMolecule
               inputProps={{
                 required: true,
@@ -51,10 +46,10 @@ const AddCourses = () => {
               required
               label="Course Code"
             />
-          </FlexContainer>
+          </FlexContainer> */}
         </div>
         <div>
-          <LabelSelectMolecule
+          {/* <LabelSelectMolecule
             label="Select School"
             name="selectSchool"
             required
@@ -82,10 +77,10 @@ const AddCourses = () => {
                 .toLowerCase?.()
                 .localeCompare(String(optionB?.label ?? '').toLowerCase?.())
             }
-          />
+          /> */}
         </div>
         <div>
-          <LabelSelectMolecule
+          {/* <LabelSelectMolecule
             label="Select Semester"
             name="semester"
             required
@@ -98,8 +93,8 @@ const AddCourses = () => {
                 .toLowerCase?.()
                 .localeCompare(String(optionB?.label ?? '').toLowerCase?.())
             }
-          />
-          <LabelSelectMolecule
+          /> */}
+          {/* <LabelSelectMolecule
             label="Select Level"
             name="level"
             required
@@ -112,8 +107,8 @@ const AddCourses = () => {
                 .toLowerCase?.()
                 .localeCompare(String(optionB?.label ?? '').toLowerCase?.())
             }
-          />
-          <LabeledDateInputMolecule
+          /> */}
+          {/* <LabeledDateInputMolecule
             label="Select Year"
             name="year"
             required
@@ -130,7 +125,7 @@ const AddCourses = () => {
             //     .toLowerCase?.()
             //     .localeCompare(String(optionB?.label ?? '').toLowerCase?.())
             // }
-          />
+          /> */}
           <Center>
             <ButtonPrimary
               className="p-4 flex w-full mt-4 justify-center items-center"

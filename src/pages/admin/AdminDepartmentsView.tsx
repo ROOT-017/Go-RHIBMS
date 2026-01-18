@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAdminManageDepartments } from '../../hooks/admin.hooks';
 import { useNavigate } from 'react-router-dom';
 import Filters from '../../components/Filter/Filters';
@@ -18,13 +17,13 @@ const AdminDepartmentsView = () => {
       dataIndex: 'departmentName',
       key: 'departmentName',
       fixed: 'left',
-      render: (_, record) => record.departmentName,
+      // render: (_, record) => record.departmentName,
     },
     {
       title: 'School',
       dataIndex: 'school',
       key: 'school',
-      render: (_, record) => record.school,
+      // render: (_, record) => record.school,
     },
   ];
 
@@ -54,16 +53,16 @@ const AdminDepartmentsView = () => {
         style={{
           overflowX: 'auto',
         }}
-        onRow={(record) => ({
-          onClick: () => navigate(`${record.departmentName}/details`),
-          title: 'View Department Details',
-        })}
+        // onRow={(record) => ({
+        //   onClick: () => navigate(`${record.departmentName}/details`),
+        //   title: 'View Department Details',
+        // })}
         // scroll={{
         //   x: 720,
         // }}
-        rowKey={(record) =>
-          record.id ? record.id.toString() : record.departmentName
-        }
+        // rowKey={(record) =>
+        //   record.id ? record.id.toString() : record.departmentName
+        // }
         //  pagination={{
         //         current: workers.number + 1,
         //         total: workers.totalElements,

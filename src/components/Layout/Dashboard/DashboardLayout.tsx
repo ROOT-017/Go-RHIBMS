@@ -1,4 +1,3 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
 import StudentNavbar from '../../Navbar/StudentNavbar.organism';
 import { Footer } from '../../Footer/footer';

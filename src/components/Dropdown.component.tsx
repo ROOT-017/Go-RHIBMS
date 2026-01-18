@@ -1,8 +1,7 @@
 import React, { CSSProperties } from 'react';
 import { Button, Dropdown, MenuProps } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import { AvatarInternal } from './AvatarInternal.component';
-import { useLogout } from '../hooks/common.hooks';
+// import { useLogout } from '../hooks/common.hooks';
 
 interface SignUpHeaderProps {
   menuFunction?: () => void;
@@ -12,7 +11,7 @@ interface SignUpHeaderProps {
 }
 
 const DropdownComponent: React.FC<SignUpHeaderProps> = (props) => {
-  const logout = useLogout();
+  // const logout = useLogout();
   const items: MenuProps['items'] = [
     {
       key: '1',
@@ -33,7 +32,7 @@ const DropdownComponent: React.FC<SignUpHeaderProps> = (props) => {
     {
       key: '3',
       label: (
-        <Button className="text-left w-full  p-0" type="link" onClick={logout}>
+        <Button className="text-left w-full  p-0" type="link" onClick={()=>{}}>
           Logout
         </Button>
       ),
@@ -45,7 +44,7 @@ const DropdownComponent: React.FC<SignUpHeaderProps> = (props) => {
         <Dropdown menu={{ items }}>
           <a onClick={(e) => e.preventDefault()}>
             <div className="flex gap-4">
-              <AvatarInternal />
+              {/* <AvatarInternal /> */}
               <DownOutlined style={props.arrowStyle} />
             </div>
           </a>

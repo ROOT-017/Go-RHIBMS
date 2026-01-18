@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './template.module.css';
 
 import { TemplateHeadProps } from './templatehead.type';

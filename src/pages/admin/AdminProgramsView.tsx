@@ -15,25 +15,25 @@ const AdminProgramsView = () => {
       dataIndex: 'programName',
       key: 'programName',
       fixed: 'left',
-      render: (_, record) => record.programName,
+      // render: (_, record) => record.programName,
     },
     {
       title: 'Program Type',
       dataIndex: 'programType',
       key: 'programType',
-      render: (_, record) => record.programType,
+      // render: (_, record) => record.programType,
     },
     {
       title: 'Department',
       dataIndex: 'department',
       key: 'department',
-      render: (_, record) => record.department,
+      // render: (_, record) => record.department,
     },
     {
       title: 'School',
       dataIndex: 'school',
       key: 'school',
-      render: (_, record) => record.school,
+      // render: (_, record) => record.school,
     },
   ];
 
@@ -63,16 +63,16 @@ const AdminProgramsView = () => {
         style={{
           overflowX: 'auto',
         }}
-        onRow={(record) => ({
-          onClick: () => navigate(`${record.programName}/details`),
-          title: 'View Program Details',
-        })}
+        // onRow={(record) => ({
+        //   onClick: () => navigate(`${record.programName}/details`),
+        //   title: 'View Program Details',
+        // })}
         // scroll={{
         //   x: 720,
         // }}
-        rowKey={(record) =>
-          record.id ? record.id.toString() : record.programName
-        }
+        // rowKey={(record) =>
+        //   record.id ? record.id.toString() : record.programName
+        // }
         //  pagination={{
         //         current: workers.number + 1,
         //         total: workers.totalElements,

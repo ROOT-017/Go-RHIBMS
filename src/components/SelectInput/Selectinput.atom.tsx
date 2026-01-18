@@ -2,13 +2,12 @@ import React, { FocusEvent, useCallback, useEffect, useRef, useState } from 'rea
 
 import styles from './selectinput.module.css';
 import UseOnClickOutside from '../../utils/clickOutside';
-import { MedChangeEventTarget } from '../../@types';
 
 export interface SelectInputAtomProps {
   options?: string[];
   value?: string;
   onChange?: (value: string) => void;
-  onBlur?: (e?: FocusEvent<HTMLInputElement> | MedChangeEventTarget) => void,
+  onBlur?: (e?: FocusEvent<HTMLInputElement> ) => void,
 }
 
 const SelectInputAtom: React.FC<SelectInputAtomProps> = ({

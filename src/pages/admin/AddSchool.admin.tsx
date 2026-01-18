@@ -7,7 +7,7 @@ import { ArrowLeftOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
 const AddSchool = () => {
-  const { data, onChange, loading, handleAddSubmit } = useAdminManageSchools();
+  const { loading } = useAdminManageSchools();
   const navigate = useNavigate();
   return (
     <div className="p-5 lg:mx-72 my-12 w-full flex flex-col items-center">
@@ -27,9 +27,9 @@ const AddSchool = () => {
             <LabeledInputMolecule
               inputProps={{
                 required: true,
-                value: data.name,
+                // value: data.name,
                 placeholder: 'School Name',
-                onChange: (e) => onChange('name', e.target.value),
+                // onChange: (e) => onChange('name', e.target.value),
               }}
               required
               label="Name"
@@ -40,9 +40,9 @@ const AddSchool = () => {
           <LabeledInputMolecule
             inputProps={{
               required: true,
-              value: data.name,
+              // value: data.name,
               placeholder: 'Description',
-              onChange: (e) => onChange('name', e.target.value),
+              // onChange: (e) => onChange('name', e.target.value),
             }}
             required
             label="Description"
@@ -51,7 +51,7 @@ const AddSchool = () => {
         <Center>
           <ButtonPrimary
             className="mt-4 w-full flex text-center justify-center items-center"
-            onClick={handleAddSubmit}
+            // onClick={handleAddSubmit}
             loading={loading}
           >
             Add School

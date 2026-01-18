@@ -1,22 +1,21 @@
 import LabeledInputMolecule from '../../components/LabeledInput/LabeledInput.molecule';
-import { FlexContainer } from '../../components/flex-container';
+// import { FlexContainer } from '../../components/flex-container';
 import LabelSelectMolecule from '../../components/Input/LabelSelectMolecule';
-import { Gender, Programs } from '../../constants';
-import LabeledDateInputMolecule from '../../components/LabeledDateInput/LabeledDateInput.molecule';
+// import { Gender, Programs } from '../../constants';
+// import LabeledDateInputMolecule from '../../components/LabeledDateInput/LabeledDateInput.molecule';
 import {
-  useAddStudent,
   useAdminManageDepartments,
 } from '../../hooks/admin.hooks';
 import { ButtonPrimary } from '../../components/design-system/buttons';
 import Center from '../../components/Layout/Center/Center';
-import { CloudUploadFilled } from '../../components/Icons/svg';
-import FileInput from '../../components/Icons/svg/file-input';
+// import { CloudUploadFilled } from '../../components/Icons/svg';
+// import FileInput from '../../components/Icons/svg/file-input';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
 const AddDepartment = () => {
   const navigate = useNavigate();
-  const { data, onChange, loading, handleAddSubmit } =
+  const {  loading, } =
     useAdminManageDepartments();
   return (
     <div className="p-5 lg:mx-72 my-12 w-full flex flex-col items-center">
@@ -38,8 +37,8 @@ const AddDepartment = () => {
             inputProps={{
               required: true,
               placeholder: 'Department Name',
-              value: data.name,
-              onChange: (e) => onChange('name', e.target.value),
+              // value: data.name,
+              // onChange: (e) => onChange('name', e.target.value),
             }}
             required
             label="Department Name"
@@ -51,7 +50,7 @@ const AddDepartment = () => {
             placeholder={'Select school'}
             showSearch={false}
             // options={academicLevel}
-            onChange={(e) => onChange('level', e.target.value)}
+            // onChange={(e) => onChange('level', e.target.value)}
             filterSort={(optionA, optionB) =>
               String(optionA?.label ?? '')
                 .toLowerCase?.()
@@ -61,7 +60,7 @@ const AddDepartment = () => {
           <Center>
             <ButtonPrimary
               className="mt-4 w-full flex justify-center items-center"
-              onClick={handleAddSubmit}
+              // onClick={handleAddSubmit}
               loading={loading}
             >
               Add Department

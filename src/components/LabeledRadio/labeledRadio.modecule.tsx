@@ -1,8 +1,6 @@
 import { Radio } from 'antd';
 import React, { useEffect, useState } from 'react';
 import styles from './labeled.module.css';
-import { YesOrNo } from '../../constants';
-import TextAreaAtom from '../textarea/TextArea.atom';
 import { LabeledRadioModeculeProps } from './labeledradio.type';
 
 const LabeledRadioModecule: React.FC<LabeledRadioModeculeProps> = ({
@@ -16,12 +14,12 @@ const LabeledRadioModecule: React.FC<LabeledRadioModeculeProps> = ({
   textAreaName,
   onChange,
   listNumber,
-  specify = true,
+  // specify = true,
   extraText,
   ...antProps
 }: LabeledRadioModeculeProps) => {
   const [selectValue, setSelectedValue] = useState<string | undefined>();
-  const [textArea, setTextArea] = useState<string | undefined>();
+  const [_,setTextArea] = useState<string | undefined>();
   const [radio, setRadio] = useState<string | undefined>();
 
   useEffect(() => {
@@ -34,26 +32,26 @@ const LabeledRadioModecule: React.FC<LabeledRadioModeculeProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectValue]);
 
-  const handleTextAreaChange = (value: string) => {
-    setTextArea(value);
-    setSelectedValue(value);
-  };
+  // const handleTextAreaChange = (value: string) => {
+  //   setTextArea(value);
+  //   setSelectedValue(value);
+  // };
 
   const handleRadioChange = (value: string) => {
     setRadio(value);
     setTextArea(undefined);
     setSelectedValue(undefined);
-    if (!options) {
-      if (value === YesOrNo.No) {
-        setSelectedValue(YesOrNo.No);
-      } else if (!specify) {
-        setSelectedValue(value);
-      } else {
-        setSelectedValue(undefined);
-      }
-    } else {
-      setSelectedValue(value);
-    }
+    // if (!options) {
+    //   if (value === YesOrNo.No) {
+    //     setSelectedValue(YesOrNo.No);
+    //   } else if (!specify) {
+    //     setSelectedValue(value);
+    //   } else {
+    //     setSelectedValue(undefined);
+    //   }
+    // } else {
+    //   setSelectedValue(value);
+    // }
   };
 
   return (
@@ -85,11 +83,11 @@ const LabeledRadioModecule: React.FC<LabeledRadioModeculeProps> = ({
           value={radio}
           {...antProps}
         >
-          {Object.entries(options ?? YesOrNo).map(([k, v]) => (
+          {/* {Object.entries(options ?? YesOrNo).map(([k, v]) => (
             <Radio key={v} value={k}>
               {v}
             </Radio>
-          ))}
+          ))} */}
         </Radio.Group>
       </div>
       {extraText ? (
@@ -97,7 +95,7 @@ const LabeledRadioModecule: React.FC<LabeledRadioModeculeProps> = ({
           {extraText}
         </p>
       ) : null}
-      {radio === YesOrNo.Yes && specify && (
+      {/* {radio === YesOrNo.Yes && specify && (
         <div className="text-textColor text-[1.2rem]">
           <TextAreaAtom
             placeholder={placeholder ?? ''}
@@ -106,7 +104,7 @@ const LabeledRadioModecule: React.FC<LabeledRadioModeculeProps> = ({
             value={textArea ?? ''}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 };

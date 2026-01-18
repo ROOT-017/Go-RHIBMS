@@ -1,38 +1,37 @@
 import { useNavigate } from 'react-router-dom';
 import { useAdminManageSchools } from '../../hooks/admin.hooks';
-import { Table, TableProps } from 'antd';
-import { School } from '../../@types';
+import { Table } from 'antd';
 import { ButtonPrimary } from '../../components/design-system/buttons';
 import Filters from '../../components/Filter/Filters';
 import { PlusOutlined } from '@ant-design/icons';
 
 const AdminSchoolView = () => {
-  const { data, filters, loading, onChangeFilters } = useAdminManageSchools();
+  const { data, filters, onChangeFilters } = useAdminManageSchools();
   const navigate = useNavigate();
-  const columns: TableProps<School>['columns'] = [
-    {
-      title: 'ID',
-      dataIndex: 'id',
-      key: 'id',
-      render: (_, __, i) => i + 1,
-    },
-    {
-      title: 'School Name',
-      dataIndex: 'schoolName',
-      key: 'schoolName',
-      fixed: 'left',
-      render: (_, record) => record.schoolName,
-    },
-    {
-      title: 'Actions',
-      key: 'actions',
-      render: (_, record) => (
-        <ButtonPrimary onClick={() => navigate(`${record.schoolName}/details`)}>
-          View
-        </ButtonPrimary>
-      ),
-    },
-  ];
+  // const columns: TableProps<School>['columns'] = [
+  //   {
+  //     title: 'ID',
+  //     dataIndex: 'id',
+  //     key: 'id',
+  //     render: (_, __, i) => i + 1,
+  //   },
+  //   {
+  //     title: 'School Name',
+  //     dataIndex: 'schoolName',
+  //     key: 'schoolName',
+  //     fixed: 'left',
+  //     render: (_, record) => record.schoolName,
+  //   },
+  //   {
+  //     title: 'Actions',
+  //     key: 'actions',
+  //     render: (_, record) => (
+  //       <ButtonPrimary onClick={() => navigate(`${record.schoolName}/details`)}>
+  //         View
+  //       </ButtonPrimary>
+  //     ),
+  //   },
+  // ];
   return (
     <div className="p-5 lg:mx-32 ">
       <div className="my-6">
@@ -54,21 +53,21 @@ const AdminSchoolView = () => {
       />
       <Table
         dataSource={data}
-        columns={columns}
-        loading={loading}
+        // columns={columns}
+        // loading={loading}
         style={{
           overflowX: 'auto',
         }}
-        onRow={(record) => ({
-          onClick: () => navigate(`${record.schoolName}/details`),
-          // title: 'View School Details',
-        })}
+        // onRow={(record) => ({
+        // onClick: () => navigate(`${record.schoolName}/details`),
+        // title: 'View School Details',
+        // })}
         // scroll={{
         //   x: 720,
         // }}
-        rowKey={(record) =>
-          record.id ? record.id.toString() : record.schoolName
-        }
+        // rowKey={(record) =>
+        //   record.id ? record.id.toString() : record.schoolName
+        // }
         //  pagination={{
         //         current: workers.number + 1,
         //         total: workers.totalElements,

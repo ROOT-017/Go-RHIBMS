@@ -3,7 +3,6 @@ import {
   CollapseProps as AntCollapseProps,
 } from 'antd';
 import { HTMLAttributes, ReactNode } from 'react';
-import { CollapseLabel } from '../../pages/dashboard/profile/worker/components/CollapseLabel';
 
 interface CollapseProps extends AntCollapseProps {
   children: ReactNode;
@@ -40,12 +39,7 @@ const Collapse = ({
         items={[
           {
             key: '1',
-            label:
-              typeof label === 'string' ? (
-                <CollapseLabel {...labelAttributes} label={label} />
-              ) : (
-                label
-              ),
+            label: typeof label === 'string' ? <>{label}</> : label,
             children: children,
           },
         ]}

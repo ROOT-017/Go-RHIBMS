@@ -4,7 +4,7 @@
 import styles from './terms.module.scss';
 
 // import { sampleMarkdown } from '../privacy-policy/sample';
-import NavbarOrganism from '../../components/Navbar/Navbar.organism';
+// import NavbarOrganism from '../../components/Navbar/Navbar.organism';
 import { Flex, Spin } from 'antd';
 import { useEffect, useState } from 'react';
 import Chatbot from '../../components/chatbot/Chatbot';
@@ -19,7 +19,7 @@ const TermsAndConditionPage = () => {
   return (
     // <div className={`${styles.terms__and__condition}`}>
     <div className="flex w-full flex-col text-textColor mt-[5vh] md:mt-[10vh] bg-dashboardCardColor ">
-      <NavbarOrganism />
+      {/* <NavbarOrganism /> */}
       {loading ? (
         <Flex justify="center" align="center" className="h-[60vh]">
           <Spin />

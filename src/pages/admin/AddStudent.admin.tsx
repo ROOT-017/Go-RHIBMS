@@ -2,20 +2,16 @@ import LabeledInputMolecule from '../../components/LabeledInput/LabeledInput.mol
 import { FlexContainer } from '../../components/flex-container';
 import LabelSelectMolecule from '../../components/Input/LabelSelectMolecule';
 import { Gender, Programs } from '../../constants';
-import LabeledDateInputMolecule from '../../components/LabeledDateInput/LabeledDateInput.molecule';
+// import LabeledDateInputMolecule from '../../components/LabeledDateInput/LabeledDateInput.molecule';
 import { useAddStudent } from '../../hooks/admin.hooks';
 import { ButtonPrimary } from '../../components/design-system/buttons';
 import Center from '../../components/Layout/Center/Center';
 import { CloudUploadFilled } from '../../components/Icons/svg';
 import FileInput from '../../components/Icons/svg/file-input';
-import {
-  ArrowLeftOutlined,
-  BackwardFilled,
-  FastBackwardFilled,
-} from '@ant-design/icons';
+import { ArrowLeftOutlined } from '@ant-design/icons';
 
 const AddStudent = () => {
-  const { data, onChange, loading, handleAddSubmit } = useAddStudent();
+  const {  onChange, loading, handleAddSubmit } = useAddStudent();
   return (
     <div className="p-5 lg:mx-72 my-12 w-full flex flex-col items-center">
       <div className="flex items-center lg:w-[60%]">
@@ -35,8 +31,8 @@ const AddStudent = () => {
               inputProps={{
                 required: true,
                 placeholder: 'Full Names',
-                value: data.fullName,
-                onChange: (e) => onChange('fullName', e.target.value),
+                // value: data.fullName,
+                // onChange: (e) => onChange('fullName', e.target.value),
               }}
               required
               label="Full Name"
@@ -46,10 +42,10 @@ const AddStudent = () => {
             <LabeledInputMolecule
               inputProps={{
                 required: true,
-                value: data.matriculationNumber,
-                placeholder: 'Matriculation number',
-                onChange: (e) =>
-                  onChange('matriculationNumber', e.target.value),
+                // value: data.matriculationNumber,
+                // placeholder: 'Matriculation number',
+                // onChange: (e) =>
+                //   onChange('matriculationNumber', e.target.value),
               }}
               required
               label="Matriculation Number"
@@ -60,14 +56,13 @@ const AddStudent = () => {
           <LabeledInputMolecule
             inputProps={{
               required: true,
-              value: data.email,
-              type:'email',
-              placeholder: 'Email',
-              onChange: (e) => onChange('email', e.target.value),
+              // value: data.email,
+              // type: 'email',
+              // placeholder: 'Email',
+              // onChange: (e) => onChange('email', e.target.value),
             }}
             required
             label="Email"
-            
           />
           <LabelSelectMolecule
             label="Gender"
@@ -84,7 +79,7 @@ const AddStudent = () => {
                 .localeCompare(String(optionB?.label ?? '').toLowerCase?.())
             }
           />
-          <FlexContainer labelRequired={false} label={''}>
+        {/*   <FlexContainer labelRequired={false} label={''}>
             <LabeledDateInputMolecule
               name="dateOfBirth"
               value={data.dateOfBirth}
@@ -92,8 +87,8 @@ const AddStudent = () => {
               required
               picker="date"
               label="Date of Birth"
-            />
-          </FlexContainer>
+            /> 
+          </FlexContainer>*/}
           <LabelSelectMolecule
             label="School or Department"
             name="department"
@@ -110,7 +105,7 @@ const AddStudent = () => {
           />
         </div>
         <div>
-          <FlexContainer labelRequired={false} label={''}>
+          {/* <FlexContainer labelRequired={false} label={''}>
             <LabeledInputMolecule
               inputProps={{
                 required: true,
@@ -121,7 +116,7 @@ const AddStudent = () => {
               required
               label="Place of Birth"
             />
-          </FlexContainer>
+          </FlexContainer> */}
           <LabelSelectMolecule
             label="Select Program"
             name="program"

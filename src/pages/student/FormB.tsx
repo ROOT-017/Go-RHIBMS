@@ -1,6 +1,3 @@
-import React from 'react';
-import LabelSelectMolecule from '../../components/Input/LabelSelectMolecule';
-
 const FormB = () => {
   return (
     <div className="p-5 lg:mx-32 my-5">

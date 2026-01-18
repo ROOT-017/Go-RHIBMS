@@ -2,7 +2,7 @@ import LabeledInputMolecule from '../../components/LabeledInput/LabeledInput.mol
 import { FlexContainer } from '../../components/flex-container';
 import LabelSelectMolecule from '../../components/Input/LabelSelectMolecule';
 import { Gender, Programs } from '../../constants';
-import LabeledDateInputMolecule from '../../components/LabeledDateInput/LabeledDateInput.molecule';
+// import LabeledDateInputMolecule from '../../components/LabeledDateInput/LabeledDateInput.molecule';
 import { useAddStudent } from '../../hooks/admin.hooks';
 import { ButtonPrimary } from '../../components/design-system/buttons';
 import Center from '../../components/Layout/Center/Center';
@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AddProgram = () => {
   const navigate = useNavigate()
-  const { data, onChange, loading, handleAddSubmit } = useAddStudent();
+  const {  onChange, loading, handleAddSubmit } = useAddStudent();
   return (
     <div className="p-5 lg:mx-72 my-12 w-full flex flex-col items-center">
       <div className="flex items-center lg:w-[60%]">
@@ -33,8 +33,8 @@ const AddProgram = () => {
               inputProps={{
                 required: true,
                 placeholder: 'Full Names',
-                value: data.fullName,
-                onChange: (e) => onChange('fullName', e.target.value),
+                // value: data.fullName,
+                // onChange: (e) => onChange('fullName', e.target.value),
               }}
               required
               label="Full Name"
@@ -44,10 +44,10 @@ const AddProgram = () => {
             <LabeledInputMolecule
               inputProps={{
                 required: true,
-                value: data.matriculationNumber,
+                // value: data.matriculationNumber,
                 placeholder: 'Matriculation number',
-                onChange: (e) =>
-                  onChange('matriculationNumber', e.target.value),
+                // onChange: (e) =>
+                //   onChange('matriculationNumber', e.target.value),
               }}
               required
               label="Matriculation Number"
@@ -70,7 +70,7 @@ const AddProgram = () => {
                 .localeCompare(String(optionB?.label ?? '').toLowerCase?.())
             }
           />
-          <FlexContainer labelRequired={false} label={''}>
+          {/* <FlexContainer labelRequired={false} label={''}>
             <LabeledDateInputMolecule
               name="dateOfBirth"
               value={data.dateOfBirth}
@@ -79,7 +79,7 @@ const AddProgram = () => {
               picker="date"
               label="Date of Birth"
             />
-          </FlexContainer>
+          </FlexContainer> */}
           <LabelSelectMolecule
             label="School or Department"
             name="department"
@@ -101,8 +101,8 @@ const AddProgram = () => {
               inputProps={{
                 required: true,
                 placeholder: 'Place of Birth',
-                value: data.placeOfBirth,
-                onChange: (e) => onChange('placeOfBirth', e.target.value),
+                // value: data.placeOfBirth,
+                // onChange: (e) => onChange('placeOfBirth', e.target.value),
               }}
               required
               label="Place of Birth"

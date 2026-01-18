@@ -1,7 +1,7 @@
-import dayjs, { Dayjs, OpUnitType } from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
-import { CalendarRange, TemporalUnit } from '../@types';
+// import { CalendarRange, TemporalUnit } from '../@types';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -183,39 +183,39 @@ export const toFullDateYearMonthDay = (
     .tz(ZoneId.systemDefault)
     .format('YYYY-MM-DD');
 };
-export const dateInRange = (
-  date: Dayjs,
-  range: CalendarRange,
-  unit: OpUnitType,
-) => {
-  const start = dayjs(`${range.start_date} ${range.start_time ?? ''}`);
-  const end = dayjs(`${range.end_date} ${range.end_time ?? ''}`);
-  return date.isBetween(start, end, unit, '[]');
-};
+// export const dateInRange = (
+//   date: Dayjs,
+//   range: CalendarRange,
+//   unit: OpUnitType,
+// ) => {
+//   const start = dayjs(`${range.start_date} ${range.start_time ?? ''}`);
+//   const end = dayjs(`${range.end_date} ${range.end_time ?? ''}`);
+//   return date.isBetween(start, end, unit, '[]');
+// };
 
-export const fullDay30MinSlots = (value: Dayjs) =>
-  [...Array(48)].map((_, i) => {
-    return (value ?? dayjs())
-      ?.startOf('day')
-      .hour(Math.floor(i / 2))
-      .minute((i % 2) * 30);
-  });
-export const isPastSlot = (
-  date: Dayjs,
-  unit?: OpUnitType,
-  endTime?: string,
-) => {
-  const currentDateTime = dayjs();
-  const slotEndTime = endTime
-    ? dayjs(`${date.format('YYYY-MM-DD')} ${endTime}`)
-    : date;
-  // If the date is today, disable only past time slots
-  if (date.isSame(currentDateTime, unit)) {
-    return dayjs().isBetween(date.subtract(30, 'minutes'), slotEndTime, unit); // Disable if the slot's end time is in the past
-  }
-  // Disable if the date is in the past
-  return date.isBefore(currentDateTime, unit);
-};
+// export const fullDay30MinSlots = (value: Dayjs) =>
+//   [...Array(48)].map((_, i) => {
+//     return (value ?? dayjs())
+//       ?.startOf('day')
+//       .hour(Math.floor(i / 2))
+//       .minute((i % 2) * 30);
+//   });
+// export const isPastSlot = (
+//   date: Dayjs,
+//   unit?: OpUnitType,
+//   endTime?: string,
+// ) => {
+//   const currentDateTime = dayjs();
+//   const slotEndTime = endTime
+//     ? dayjs(`${date.format('YYYY-MM-DD')} ${endTime}`)
+//     : date;
+//   // If the date is today, disable only past time slots
+//   if (date.isSame(currentDateTime, unit)) {
+//     return dayjs().isBetween(date.subtract(30, 'minutes'), slotEndTime, unit); // Disable if the slot's end time is in the past
+//   }
+//   // Disable if the date is in the past
+//   return date.isBefore(currentDateTime, unit);
+// };
 
 export const preferredDateDisplay = (
   val?: string | Date | Dayjs | number,
@@ -300,42 +300,42 @@ export const shiftTimeDisplay = (
     : '';
 };
 
-export function humanDuration(
-  value: number,
-  unit: TemporalUnit = 'hour',
-): string {
-  const unitsInMs: Record<TemporalUnit, number> = {
-    day: 86400000,
-    hour: 3600000,
-    minute: 60000,
-    second: 1000,
-    millisecond: 1,
-  };
+// export function humanDuration(
+//   value: number,
+//   unit: TemporalUnit = 'hour',
+// ): string {
+//   const unitsInMs: Record<TemporalUnit, number> = {
+//     day: 86400000,
+//     hour: 3600000,
+//     minute: 60000,
+//     second: 1000,
+//     millisecond: 1,
+//   };
 
-  let durationMs = value * unitsInMs[unit];
+//   let durationMs = value * unitsInMs[unit];
 
-  const breakdown: Record<TemporalUnit, number> = {
-    day: Math.floor(durationMs / unitsInMs.day),
-    hour: 0,
-    minute: 0,
-    second: 0,
-    millisecond: 0,
-  };
-  durationMs %= unitsInMs.day;
+//   const breakdown: Record<TemporalUnit, number> = {
+//     day: Math.floor(durationMs / unitsInMs.day),
+//     hour: 0,
+//     minute: 0,
+//     second: 0,
+//     millisecond: 0,
+//   };
+//   durationMs %= unitsInMs.day;
 
-  breakdown.hour = Math.floor(durationMs / unitsInMs.hour);
-  durationMs %= unitsInMs.hour;
+//   breakdown.hour = Math.floor(durationMs / unitsInMs.hour);
+//   durationMs %= unitsInMs.hour;
 
-  breakdown.minute = Math.floor(durationMs / unitsInMs.minute);
-  durationMs %= unitsInMs.minute;
+//   breakdown.minute = Math.floor(durationMs / unitsInMs.minute);
+//   durationMs %= unitsInMs.minute;
 
-  breakdown.second = Math.floor(durationMs / unitsInMs.second);
-  durationMs %= unitsInMs.second;
+//   breakdown.second = Math.floor(durationMs / unitsInMs.second);
+//   durationMs %= unitsInMs.second;
 
-  breakdown.millisecond = durationMs;
+//   breakdown.millisecond = durationMs;
 
-  return (Object.entries(breakdown) as [TemporalUnit, number][])
-    .filter(([_, val]) => val > 0)
-    .map(([key, val]) => `${val} ${key}${val !== 1 ? 's' : ''}`)
-    .join(', ');
-}
+//   return (Object.entries(breakdown) as [TemporalUnit, number][])
+//     .filter(([_, val]) => val > 0)
+//     .map(([key, val]) => `${val} ${key}${val !== 1 ? 's' : ''}`)
+//     .join(', ');
+// }

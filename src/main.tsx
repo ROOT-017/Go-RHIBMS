@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.scss';
@@ -9,6 +8,7 @@ import { store } from './store/index.ts';
 import { ConfigProvider } from 'antd';
 import { colors } from './assets/colors.ts';
 import { AppInitializer } from './components/AppInitializer.tsx';
+import React from 'react';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

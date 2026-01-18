@@ -1,4 +1,3 @@
-import React from 'react';
 import { ServiceComponentProps } from './service.type';
 
 const ServiceComponent: React.FC<ServiceComponentProps> = ({

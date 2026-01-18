@@ -1,5 +1,4 @@
 // components/RoleGuard.tsx
-import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '../../store/features/selectors/auth.selector';
@@ -11,10 +10,10 @@ interface RoleGuardProps {
   fallbackPath?: string;
 }
 
-export const RoleGuard: React.FC<RoleGuardProps> = ({ 
-  children, 
-  allowedRoles, 
-  fallbackPath = '/dashboard' 
+export const RoleGuard: React.FC<RoleGuardProps> = ({
+  children,
+  allowedRoles,
+  fallbackPath = '/dashboard',
 }) => {
   const location = useLocation();
   const userRole = useSelector(selectUserRole);

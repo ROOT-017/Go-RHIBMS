@@ -24,9 +24,9 @@ const AdminStudentView = () => {
         key: 'fullName',
         fixed: 'left',
         // width: 150,
-        render(_, record) {
-          return record.fullName;
-        },
+        // render(_, record) {
+        //   return record.fullName;
+        // },
       },
       {
         title: 'Matriculation Number',
@@ -34,25 +34,25 @@ const AdminStudentView = () => {
         key: 'matriculationNumber',
         width: 250,
 
-        render(_, record) {
-          return record.matriculationNumber;
-        },
+        // render(_, record) {
+        //   return record.matriculationNumber;
+        // },
       },
       {
         title: 'Department',
         dataIndex: 'department',
         key: 'department',
-        render(_, record) {
-          return record.department;
-        },
+        // render(_, record) {
+        //   return record.department;
+        // },
       },
       {
         title: 'Program',
         dataIndex: 'program',
         key: 'program',
-        render(_, record) {
-          return record.program;
-        },
+        // render(_, record) {
+        //   return record.program;
+        // },
       },
     ];
     return columns;
@@ -79,14 +79,14 @@ const AdminStudentView = () => {
         dataSource={dataSource}
         columns={columns}
         loading={loading}
-        onRow={(record) => ({
-          onClick: () => navigate(`${record.matriculationNumber}/details`),
-          title: 'View Student Details',
-          style: { cursor: 'pointer' },
-        })}
-        rowKey={(record) =>
-          record.id ? record.id.toString() : record.matriculationNumber
-        }
+        // onRow={(record) => ({
+          // onClick: () => navigate(`${record.matriculationNumber}/details`),
+        //   title: 'View Student Details',
+        //   style: { cursor: 'pointer' },
+        // })}
+        // rowKey={(record) =>
+        //   record.id ? record.id.toString() : record.matriculationNumber
+        // }
       />
     </div>
   );

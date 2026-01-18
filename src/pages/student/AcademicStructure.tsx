@@ -1,7 +1,6 @@
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import { Collapse } from 'antd';
 import CollapsePanel from 'antd/es/collapse/CollapsePanel';
-import React from 'react';
 
 const AcademicStructure = () => {
   // const onChange = (key: string | string[]) => {
@@ -74,7 +73,6 @@ const AcademicStructure = () => {
                     expandIcon={(e) =>
                       e.isActive ? <MinusOutlined /> : <PlusOutlined />
                     }
-
                     items={item.departments.map(
                       (department, departmentIndex) => ({
                         label: department.department,
@@ -97,9 +95,7 @@ const AcademicStructure = () => {
                         ),
                       }),
                     )}
-                    style={{
-                      
-                    }}
+                    style={{}}
                   />
                 ),
               },

@@ -1,4 +1,3 @@
-import React from 'react';
 import Chatbot from '../../components/chatbot/Chatbot';
 import UserProfileCard from '../../components/Card/UserProfileCard';
 import { FaRegChartBar } from 'react-icons/fa6';
