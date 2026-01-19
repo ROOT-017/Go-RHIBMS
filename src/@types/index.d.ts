@@ -96,6 +96,8 @@ export interface Profile extends BaseEntity {
   full_name: string | null;
   email: string;
   role: UserRole;
+  phone?: string | null;
+  address?: string | null;
 }
 
 // School Structure Types

@@ -1,15 +1,31 @@
 import { Avatar, Popover } from 'antd';
 import profile from '../assets/profile.jpg';
-import { LogoutOutlined } from '@ant-design/icons';
+import { LogoutOutlined, SettingOutlined } from '@ant-design/icons';
 import { useLogout } from '../hooks/auth.hooks';
 import { usePrincipal } from '../hooks/common.hooks';
+import { useNavigate } from 'react-router-dom';
+import { selectUserRole } from '../store/features/selectors/auth.selector';
+import { useSelector } from '../store';
 
 const AuthUser = () => {
   const { logout } = useLogout();
   const principal = usePrincipal();
+  const navigate = useNavigate();
+  const role = useSelector(selectUserRole);
 
   const content = (
     <div>
+      <p
+        className="flex gap-4 p-4 cursor-pointer  border-t-gray-200"
+        onClick={() =>
+          navigate(
+            role === 'student' ? '/dashboard/settings' : '/admin/settings',
+          )
+        }
+      >
+        <SettingOutlined />
+        Settings
+      </p>{' '}
       <p
         className="flex gap-4 text-errorColor p-4 cursor-pointer  border-t-2 border-t-gray-200"
         onClick={logout}
@@ -23,7 +39,12 @@ const AuthUser = () => {
   return (
     <div className="flex justify-center items-center w-fit gap-4">
       <div className="text-white flex flex-col items-center">
-        <p className="lg:text-4xl font-bold">{principal?.full_name}</p>
+        <p className="lg:text-4xl font-bold">
+          {principal?.full_name}{' '}
+          {principal.role === 'student' && (
+            <span>. {principal.student?.matricule}</span>
+          )}
+        </p>
         <p className="text-xl ">First Semester 2025/2026</p>
       </div>
       <Popover

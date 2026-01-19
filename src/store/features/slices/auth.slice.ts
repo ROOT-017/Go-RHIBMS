@@ -161,61 +161,6 @@ export const loginStudent = createAsyncThunk<
   }
 });
 
-// Login for STUDENT (using matricule/password)
-// export const loginStudent = createAsyncThunk<
-//   {
-//     user: User;
-//     session: Session;
-//     profile: Profile;
-//     student: Student | null;
-//   },
-//   { matricule: string; password: string },
-//   { rejectValue: string }
-// >('auth/loginStudent', async ({ matricule, password }, { rejectWithValue }) => {
-//   // 1️⃣ First, get student by matricule to get their email
-//   const { data: studentData, error: studentError } =
-//     await getStudentByMatricule(matricule);
-// console.log(studentData);
-
-//   if (studentError || !studentData) {
-//     return rejectWithValue('Student not found');
-//   }
-
-//   // 2️⃣ Get the student's email from their profile
-//   const studentEmail = studentData.profile?.email;
-//   if (!studentEmail) {
-//     return rejectWithValue('Student email not found');
-//   }
-
-//   // 3️⃣ Authenticate with email/password
-//   const { data: authData, error: authError } =
-//     await supabase.auth.signInWithPassword({
-//       email: studentEmail,
-//       password,
-//     });
-
-//   if (authError || !authData.user || !authData.session) {
-//     return rejectWithValue(authError?.message || 'Login failed');
-//   }
-
-//   // 4️⃣ Fetch profile
-//   const { data: profile, error: profileError } = await supabase
-//     .from('profiles')
-//     .select('*')
-//     .eq('id', authData.user.id)
-//     .single<Profile>();
-
-//   if (profileError || !profile) {
-//     return rejectWithValue('Profile not found');
-//   }
-
-//   return {
-//     user: authData.user,
-//     session: authData.session,
-//     profile,
-//     student: studentData,
-//   };
-// });
 
 export const logoutUser = createAsyncThunk<void, void, { rejectValue: string }>(
   'auth/logoutUser',

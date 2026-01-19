@@ -16,7 +16,6 @@ export default function LoginPage() {
   // const query = useQueryParams();
   const { inputValues, isLoading, onInputChange, onSubmit } = useStudentLogin();
 
-
   return (
     <div className="maincontainer">
       <main className="mainWrapper flex w-screen flex-col justify-center items-center gap-4">
@@ -32,19 +31,7 @@ export default function LoginPage() {
                 </h2>
               </div>
 
-              <Space direction="vertical" style={{ width: '100%' }}>
-                {/* {error?.status?.trim() != null && (
-                  <Alert
-                    message={error?.status}
-                    type="error"
-                    closable
-                    showIcon
-                  />
-                )}
-                {message && message?.trim() != '' && (
-                  <Alert message={message} type="success" closable showIcon />
-                )} */}
-              </Space>
+              <Space direction="vertical" style={{ width: '100%' }}></Space>
               <form
                 action=""
                 onSubmit={(e) => {
@@ -63,7 +50,13 @@ export default function LoginPage() {
                       name="matricule"
                       placeholder="matriculation number"
                       onChange={onInputChange}
+                      value={inputValues.matricule}
                     />
+                    {inputValues.matricule.includes('@') && (
+                      <p className="text-red-600 text-sm mt-1">
+                        Please enter a valid matriculation number
+                      </p>
+                    )}
                   </div>
                   <div className="flex flex-col gap-2 flex-1 mb-4">
                     <label className="require-field require-field text-[1.6rem] text-[#241773] font-[600]">
@@ -85,7 +78,10 @@ export default function LoginPage() {
                   <ButtonPrimary
                     loading={isLoading}
                     disabled={
-                      isLoading || !inputValues.password || !inputValues.matricule
+                      isLoading ||
+                      !inputValues.password ||
+                      !inputValues.matricule ||
+                      inputValues.matricule.includes('@')
                     }
                     // onClick={() =>
                     //   navigate(
