@@ -19,7 +19,7 @@ import { AuthGuard } from '../components/Gaurd/AuthGuard';
 export const routes: Array<RouteObject> = [
   {
     path: pathnames.HOME,
-    element: <PublicRoute>{pages.HomePage}</PublicRoute>,
+    element: <PublicRoute restricted>{pages.HomePage}</PublicRoute>,
     errorElement: <Error404 />,
   },
 

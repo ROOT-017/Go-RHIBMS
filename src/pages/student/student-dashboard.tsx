@@ -1,7 +1,6 @@
 import Chatbot from '../../components/chatbot/Chatbot';
 import UserProfileCard from '../../components/Card/UserProfileCard';
-import { FaRegChartBar } from 'react-icons/fa6';
-import profile from '../../assets/profile.jpg';
+import { MdBarChart } from "react-icons/md";import profile from '../../assets/profile.jpg';
 import { PhoneOutlined, UserSwitchOutlined } from '@ant-design/icons';
 import { usePrincipal } from '../../hooks/common.hooks';
 import dayjs from 'dayjs';
@@ -13,7 +12,7 @@ const DashboardMainContent = () => {
       <div className="flex flex-col gap-12">
         <div className="flex gap-4">
           <div>
-            <FaRegChartBar className="text-4xl" />
+            <MdBarChart className="text-4xl" />
           </div>
           <div className="w-full mt-2 flex flex-col gap-4">
             <p className="text-4xl mb-4">Summary</p>
@@ -85,7 +84,7 @@ const DashboardMainContent = () => {
             </p>
             <p className="flex text-2xl flex-col lg:flex-row gap-2 lg:gap-0">
               <span className="lg:w-1/3">Students Address</span>
-              <span className="flex-1 text-textColor ">Muea, Buea</span>
+              <span className="flex-1 text-textColor ">{principal.address}</span>
             </p>
           </div>
         </div>
@@ -103,7 +102,7 @@ const Dashboard = () => {
           <UserProfileCard
             email={principal?.email ?? ''}
             name={principal?.full_name ?? ''}
-            location={'Muea, Buea'}
+            location={principal?.address ?? 'N/A'}
             phone={
               principal?.phone?.trim().length ? principal?.phone : '123456789'
             }

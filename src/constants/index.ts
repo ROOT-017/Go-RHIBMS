@@ -17,6 +17,35 @@ export const Programs = [
   },
 ];
 
+// Level options
+export const levelOptions = [
+  { value: 'hnd', label: 'HND' },
+  { value: 'bsc', label: 'BSc' },
+  { value: 'msc', label: 'MSc' },
+  { value: 'phd', label: 'PhD' },
+  { value: 'diploma', label: 'Diploma' },
+  { value: 'certificate', label: 'Certificate' },
+];
+
+// Semester options (1-8)
+export const semesterOptions = Array.from({ length: 8 }, (_, i) => ({
+  value: (i + 1).toString(),
+  label: `Semester ${i + 1}`,
+}));
+
+// Current year and range for admission year
+const currentYear = new Date().getFullYear();
+export const admissionYearOptions = Array.from({ length: 6 }, (_, i) => ({
+  value: (currentYear - 2 + i).toString(),
+  label: (currentYear - 2 + i).toString(),
+}));
+
+// Gender options
+export const genderOptions = [
+  { value: 'male', label: 'Male' },
+  { value: 'female', label: 'Female' },
+  { value: 'other', label: 'Other' },
+];
 export const Gender = [
   {
     label: 'Male',
@@ -75,34 +104,3 @@ export const ImageExtensions = [
   '.apng',
   '.webp',
 ];
-
-export enum ShiftStatusName {
-  started = 'started',
-  ended = 'ended',
-  approved = 'approved',
-  rejected = 'rejected',
-  processing = 'processing',
-  processed = 'processed',
-  hired = 'hired',
-  notstarted = 'notstarted',
-  pending = 'pending',
-  cancelled = 'cancelled',
-}
-export enum ProcessStatusName {
-  started = 'started',
-  ended = 'ended',
-  approved = 'approved',
-  rejected = 'rejected',
-  processing = 'processing',
-  processed = 'processed',
-  hired = 'hired',
-  notstarted = 'notstarted',
-  pending = 'pending',
-  cancelled = 'cancelled',
-  ongoing = 'ongoing',
-  expired = 'expired',
-  paid = 'paid',
-  billed = 'billed',
-  unpaid = 'unpaid',
-  NO_VALID_STATUS = 'NO_VALID_STATUS',
-}

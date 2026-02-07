@@ -1,11 +1,13 @@
 // components/PublicRoute.tsx
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
   selectIsAuthenticated,
+  selectIsLoading,
   selectUserRole,
 } from '../store/features/selectors/auth.selector';
+import { Loading } from './Loading/loading';
 
 interface PublicRouteProps {
   children: ReactNode;
@@ -17,20 +19,23 @@ export const PublicRoute: React.FC<PublicRouteProps> = ({
   restricted = false,
 }) => {
   const location = useLocation();
+  const [isChecking, setIsChecking] = React.useState(true);
+  const isLoading = useSelector(selectIsLoading);
+
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const userRole = useSelector(selectUserRole);
 
-  //   useEffect(() => {
-  //     const timer = setTimeout(() => {
-  //       setIsChecking(false);
-  //     }, 100);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsChecking(false);
+    }, 100);
 
-  //     return () => clearTimeout(timer);
-  //   }, []);
+    return () => clearTimeout(timer);
+  }, []);
 
-  //   if (isLoading || isChecking) {
-  //     return <Loading />;
-  //   }
+  if ((isLoading || isChecking) && !location.pathname.includes('/login')) {
+    return <Loading text="Loading Please wait." size="small" />;
+  }
 
   // If route is restricted and user is authenticated, redirect to appropriate dashboard
   if (restricted && isAuthenticated) {
