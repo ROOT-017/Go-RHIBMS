@@ -101,7 +101,7 @@ const studentSlice = createSlice({
       .addCase(createStudent.fulfilled, (state, action) => {
         state.isCreating = false;
         state.creationSuccess = true;
-        state.students.push(action.payload.student);
+       action.payload.student && state.students.push(action.payload.student);
       })
       .addCase(createStudent.rejected, (state, action) => {
         state.isCreating = false;

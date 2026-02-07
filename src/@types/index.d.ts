@@ -149,7 +149,7 @@ export interface Course extends BaseEntity {
   lecturer_id?: string | null; // Optional, can be null
   code: string;
   title: string;
-  credit: number;
+  description?: string;
   semester_id?: string; // Changed from 'semester' (number) to 'semester_id' (uuid)
   department_id?: string;
   program_level?: ProgramLevel;
@@ -158,6 +158,7 @@ export interface Course extends BaseEntity {
   lecturer?: Lecturer;
   semester?: Semester;
   department?: Department;
+  credits?: number;
 }
 
 // Student Types (Updated to match database schema)

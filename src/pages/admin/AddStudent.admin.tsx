@@ -5,7 +5,6 @@ import {
   admissionYearOptions,
   Gender,
   levelOptions,
-  Programs,
   semesterOptions,
 } from '../../constants';
 // import LabeledDateInputMolecule from '../../components/LabeledDateInput/LabeledDateInput.molecule';
@@ -24,15 +23,15 @@ const AddStudent = () => {
     loading,
     isCreating,
     checkingMatricule,
-    matriculeAvailable,
+    // matriculeAvailable,
     errors,
     creationSuccess,
     onChange,
     handleAddSubmit,
     checkMatricule,
-    validateField,
-    clearErrors,
-    resetForm,
+    // validateField,
+    // clearErrors,
+    // resetForm,
     goBack,
   } = useAddStudent();
 
@@ -150,7 +149,7 @@ const AddStudent = () => {
                     type: 'password',
                     placeholder: 'Password',
                     value: formData.password,
-                    
+
                     // onChange: (e) => onChange('password', e.target.value),
                     disabled: true,
                   }}
@@ -188,7 +187,7 @@ const AddStudent = () => {
                     value: formData.date_of_birth,
                     onChange: (e) => onChange('date_of_birth', e.target.value),
                     disabled: isCreating,
-                    max : new Date().toISOString().split('T')[0],
+                    max: new Date().toISOString().split('T')[0],
                   }}
                   label="Date of Birth"
                   error={errors.date_of_birth}

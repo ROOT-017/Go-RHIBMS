@@ -19,30 +19,64 @@ import {
 } from '../store/features/slices/student.slice';
 import toast from 'react-hot-toast';
 import { emailValidation } from '../utils';
+import { studentService } from '../services/studentService';
+import { supabase } from '../lib/supabaseClient';
+import { courseService } from '../services/courseService';
 
 export const useAdminManageStudents = () => {
-  const [filters, setFilters] = useState<FiltersType & { gender?: string }>({
+  const [filters, setFilters] = useState<Partial<FiltersType>>({
     department: undefined,
     program: undefined,
-    searchTerm: undefined,
+    searchTerm: '',
   });
-  const [data] = useState<Student[]>([]);
-  const onChangeFilters = (
-    //eslint-disable-next-line
-    key: keyof typeof filters | (string & {}),
-    value: string,
-  ) => {
-    setFilters((prev) => ({ ...prev, [key]: value }));
-  };
-  const [loading, _setLoading] = useState(false);
-  return {
-    data,
-    filters,
-    loading,
-    onChangeFilters,
-  };
-};
 
+  const [data, setData] = useState<Student[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [options, setOptions] = useState<{
+    departments: { label: string; value: string }[];
+    programs: { label: string; value: string }[];
+  }>({ departments: [], programs: [] });
+
+  // Fetch Dropdown Data
+  useEffect(() => {
+    const fetchOptions = async () => {
+      const { data: depts } = await supabase.from('departments').select('id, name');
+      const { data: progs } = await supabase.from('programs').select('id, name');
+      
+      setOptions({
+        departments: depts?.map(d => ({ label: d.name, value: d.id })) || [],
+        programs: progs?.map(p => ({ label: p.name, value: p.id })) || [],
+      });
+    };
+    fetchOptions();
+  }, []);
+
+  const fetchStudents = useCallback(async () => {
+    setLoading(true);
+    try {
+      const result = await studentService.getAllStudents(filters);
+      setData(result as unknown as Student[]);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  }, [filters]);
+
+  // Debounced search effect
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      fetchStudents();
+    }, 400); // Wait 400ms after typing stops
+    return () => clearTimeout(handler);
+  }, [fetchStudents]);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onChangeFilters = (key: string, value: any) => {
+    setFilters(prev => ({ ...prev, [key]: value }));
+  };
+
+  return { data, filters, loading, onChangeFilters, options };
+};
 interface FormData {
   matricule: string;
   email: string;
@@ -73,30 +107,30 @@ interface FormErrors {
   file?: string;
 }
 
-interface UseAddStudentReturn {
-  // Form data
-  formData: FormData;
-  programs: Program[];
+// interface UseAddStudentReturn {
+//   // Form data
+//   formData: FormData;
+//   programs: Program[];
 
-  // State
-  loading: boolean;
-  isCreating: boolean;
-  checkingMatricule: boolean;
-  matriculeAvailable: boolean | null;
-  errors: FormErrors;
-  creationSuccess: boolean;
+//   // State
+//   loading: boolean;
+//   isCreating: boolean;
+//   checkingMatricule: boolean;
+//   matriculeAvailable: boolean | null;
+//   errors: FormErrors;
+//   creationSuccess: boolean;
 
-  // Actions
-  onChange: <K extends keyof FormData>(key: K, value: FormData[K]) => void;
-  handleAddSubmit: () => Promise<void>;
-  checkMatricule: () => Promise<void>;
-  validateField: (field: keyof FormData) => string | undefined;
-  clearErrors: () => void;
-  resetForm: () => void;
+//   // Actions
+//   onChange: <K extends keyof FormData>(key: K, value: FormData[K]) => void;
+//   handleAddSubmit: () => Promise<void>;
+//   checkMatricule: () => Promise<void>;
+//   validateField: (field: keyof FormData) => string | undefined;
+//   clearErrors: () => void;
+//   resetForm: () => void;
 
-  // Navigation
-  goBack: () => void;
-}
+//   // Navigation
+//   goBack: () => void;
+// }
 
 const initialFormData: FormData = {
   matricule: '',
@@ -442,43 +476,98 @@ export const useAddStudent = () => {
 };
 
 export const useAddCourse = () => {
-  const [data, setData] = useState<Course[]>([]);
-  const [loading, _setLoading] = useState(false);
-  const onChange = (
-    key: keyof typeof data,
-    value: string | File | undefined,
-  ) => {
-    setData((prev) => ({ ...prev, [key]: value }));
+  const [formData, setFormData] = useState<Omit<Course, 'id'>>({
+    code: '',
+    title: '',
+    description: '',
+    credit: 0,
+    semester: {
+      id: '',
+      name: '',
+      code: '',
+      order_number: 0,
+      created_at: '',
+    },
+    department_id: '',
+    program_id: '',
+    program_level: 'hnd',
+  });
+  
+  const [isCreating, setIsCreating] = useState(false);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onChange = (key: string, value: any) => {
+    setFormData(prev => ({ ...prev, [key]: value }));
   };
 
-  const handleAddSubmit = () => {
-    console.log(data);
+  const handleSubmit = async (onSuccess: () => void) => {
+    if (!formData.code || !formData.title || !formData.program_id) {
+      return //message.error("Please fill in all required fields");
+    }
+
+    setIsCreating(true);
+    try {
+      await courseService.createCourse(formData);
+      // message.success("Course added successfully!");
+      onSuccess();
+    } catch  {
+      // message.error(error.message || "Failed to create course");
+    } finally {
+      setIsCreating(false);
+    }
   };
-  return { data, onChange, loading, handleAddSubmit };
+
+  return { formData, onChange, isCreating, handleSubmit };
 };
 
 export const useAdminManageCourses = () => {
-  const [filters, setFilters] = useState<FiltersType>({
+  const [filters, setFilters] = useState<Partial<FiltersType>>({
     department: undefined,
     program: undefined,
-    searchTerm: undefined,
+    searchTerm: '',
   });
-  const [data] = useState<Course[]>([]);
-  const onChangeFilters = (
-    //eslint-disable-next-line
-    key: keyof typeof filters | (string & {}),
-    value: string,
-  ) => {
+
+  const [data, setData] = useState<Course[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [options, setOptions] = useState<{ departments: {
+    label: string; value: string
+  }[]; programs: { label: string; value: string }[] }>({ departments: [], programs: [] });
+
+  // 1. Fetch Dropdown Options
+  useEffect(() => {
+    const fetchOptions = async () => {
+      const { data: depts } = await supabase.from('departments').select('id, name');
+      const { data: progs } = await supabase.from('programs').select('id, name');
+      setOptions({
+        departments: depts?.map(d => ({ label: d.name, value: d.id })) || [],
+        programs: progs?.map(p => ({ label: p.name, value: p.id })) || [],
+      });
+    };
+    fetchOptions();
+  }, []);
+
+  // 2. Fetch Courses
+  const fetchCourses = useCallback(async () => {
+    setLoading(true);
+    try {
+      const result = await courseService.getAllCourses(filters);
+      setData(result as unknown as Course[]);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }, [filters]);
+
+  useEffect(() => {
+    const timer = setTimeout(fetchCourses, 300); // Debounce search
+    return () => clearTimeout(timer);
+  }, [fetchCourses]);
+
+  const onChangeFilters = (key: string, value: string) => {
     setFilters((prev) => ({ ...prev, [key]: value }));
   };
 
-  const [loading, _setLoading] = useState(false);
-  return {
-    data,
-    filters,
-    loading,
-    onChangeFilters,
-  };
+  return { data, filters, loading, onChangeFilters, options };
 };
 
 export const useAdminManagePrograms = () => {
